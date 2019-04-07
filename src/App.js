@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
 root: {
@@ -38,10 +39,10 @@ class App extends Component {
               <Paper className={classes.paper}>< Header /></Paper>
             </Grid>
             <Grid item xs={8}>
-              <Paper className={classes.paper}>< ArtPane />< DialogPane /></Paper>
+              <Paper className={classes.paper}>< ArtPane /><Divider />< DialogPane /></Paper>
             </Grid>
             <Grid item xs={4}>
-              <Paper className={classes.paper}>< InfoPane />< ActionPane /></Paper>
+              <Paper className={classes.paper}>< InfoPane />< Divider />< ActionPane /></Paper>
             </Grid>
           </Grid>
         </div>
