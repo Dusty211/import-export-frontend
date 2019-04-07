@@ -4,7 +4,7 @@ import React from 'react';
 const Cash = (props) => {
   return(
     <div id="cash">
-      {`Cash: $${'120,000'}`}
+      {`Cash: $${props.cash.toLocaleString()}`}
     </div>
   )
 }

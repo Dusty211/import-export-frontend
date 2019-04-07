@@ -9,7 +9,7 @@ export default class InfoPane extends Component {
   render() {
     return(
       <div>
-        <Cash />
+        <Cash cash={125000}/>
         <StatBar stat={"Luck"} statValue={40}/>
         <StatBar stat={"Karma"} statValue={50}/>
         <StatBar stat={"Heat"} statValue={30}/>
