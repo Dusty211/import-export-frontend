@@ -17,3 +17,17 @@ code {
 #mainbody {
   margin: auto;
 }
+
+#cash {
+  text-align: center;
+}
+
+#stat-bar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#item-count {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

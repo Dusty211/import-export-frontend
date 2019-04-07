@@ -16,7 +16,7 @@ const StatBar = (props) => {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
+    <div id="stat-bar" className={classes.root}>
       {`${props.stat}: ${props.statValue}%`}
       <LinearProgress
         color="primary"
