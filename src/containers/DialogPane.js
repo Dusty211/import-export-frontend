@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Npc from '../components/Npc.js';
+import Job from '../components/Job.js';
 
 export default class DialogPane extends Component {
 
@@ -6,7 +8,8 @@ export default class DialogPane extends Component {
   render() {
     return(
       <div>
-      Dialog Pane
+      <Npc name={"Crazy Ed"}/>
+      <Job />
       </div>
     )
   }
