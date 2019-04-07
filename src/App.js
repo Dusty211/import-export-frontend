@@ -41,13 +41,23 @@ class App extends Component {
         <div style={{ padding: 10 }} className={classes.root}>
           <Grid container spacing={8}>
             <Grid item xs={12}>
-              <Paper className={classes.headerPaper}>< Header /></Paper>
+              <Paper className={classes.headerPaper}>
+                <Header />
+              </Paper>
             </Grid>
             <Grid item xs={8}>
-              <Paper className={classes.paper}>< ArtPane /><Divider />< DialogPane /></Paper>
+              <Paper className={classes.paper}>
+                <ArtPane />
+                <Divider />
+                <DialogPane />
+              </Paper>
             </Grid>
             <Grid item xs={4}>
-              <Paper className={classes.paper}>< InfoPane />< Divider />< ActionPane /></Paper>
+              <Paper className={classes.paper}>
+                <InfoPane />
+                <Divider />
+                <ActionPane />
+              </Paper>
             </Grid>
           </Grid>
         </div>
