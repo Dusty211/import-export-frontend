@@ -22,6 +22,11 @@ paper: {
   textAlign: 'left',
   color: theme.palette.text.secondary,
   },
+  headerPaper: {
+    padding: 0,
+    textAlign: 'left',
+    color: theme.palette.text.secondary,
+    },
 });
 
 class App extends Component {
@@ -36,7 +41,7 @@ class App extends Component {
         <div style={{ padding: 10 }} className={classes.root}>
           <Grid container spacing={8}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>< Header /></Paper>
+              <Paper className={classes.headerPaper}>< Header /></Paper>
             </Grid>
             <Grid item xs={8}>
               <Paper className={classes.paper}>< ArtPane /><Divider />< DialogPane /></Paper>
