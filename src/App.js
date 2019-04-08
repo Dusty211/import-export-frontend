@@ -31,6 +31,40 @@ paper: {
 
 class App extends Component {
 
+  componentDidMount() {
+  //
+  //   //login:
+  //
+    fetch('http://localhost:3000/api/v1/login', {
+      method: "POST",
+      headers:{"Content-Type":"application/json", "Accept": "application/json"},
+      body:JSON.stringify({
+        user:{
+          username:"Just One Guy",
+          password:"password"}
+        })
+      }).then(r => r.json())
+      .then(console.log)
+
+  //   //create new user:
+  //
+  //   fetch('http://localhost:3000/api/v1/users', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       user: {
+  //         username: 'Just One Guy',
+  //         password: 'password',
+  //       }
+  //     })
+  //   })
+  // .then(r => r.json())
+  // .then(console.log)
+  }
+
   render() {
 
     const { classes } = this.props;
