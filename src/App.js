@@ -31,6 +31,13 @@ paper: {
 
 class App extends Component {
 
+  constructor(){
+    super()
+    this.state = {
+      user: null
+    }
+  }
+
   componentDidMount() {
   //
   //   //login:
