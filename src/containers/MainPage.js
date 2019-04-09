@@ -32,6 +32,7 @@ paper: {
 class MainPage extends Component {
 
   componentDidMount() {
+    console.log('Props:', this.props)
   //
   //   //login:
   //
