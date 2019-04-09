@@ -51,7 +51,6 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
-      something: null
     }
   }
 
@@ -66,7 +65,7 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
+
   }
 
   render() {
@@ -80,26 +79,29 @@ class Login extends Component {
             Login
           </Typography>
           <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
-            <TextField
-              id="standard-name"
-              label="Username"
-              className={classes.textField}
-              value={this.state.name}
-              onChange={this.handleChange('username')}
-              margin="normal"
-            />
-            <TextField
-              id="standard-password-input"
-              label="Password"
-              className={classes.textField}
-              type="password"
-              autoComplete="current-password"
-              onChange={this.handleChange('password')}
-              margin="normal"
-            />
-            <Button type="submit" variant="contained" color="primary" className={classes.button}>
-              Submit
-            </Button>
+
+              <TextField
+                id="standard-name"
+                label="Username"
+                className={classes.textField}
+                value={this.state.name}
+                onChange={this.handleChange('username')}
+                margin="normal"
+              />
+              <TextField
+                id="standard-password-input"
+                label="Password"
+                className={classes.textField}
+                type="password"
+                autoComplete="current-password"
+                onChange={this.handleChange('password')}
+                margin="normal"
+              />
+
+              <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                Submit
+              </Button>
+
           </form>
         </Paper>
       </div>
