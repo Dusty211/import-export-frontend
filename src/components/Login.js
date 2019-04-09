@@ -64,7 +64,8 @@ class Login extends Component {
     console.log('Props:', this.props)
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault()
     console.log(this.state)
   }
 
@@ -78,7 +79,7 @@ class Login extends Component {
           <Typography variant="h5" component="h3">
             Login
           </Typography>
-          <form className={classes.container} noValidate autoComplete="off">
+          <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
             <TextField
               id="standard-name"
               label="Username"
@@ -93,15 +94,13 @@ class Login extends Component {
               className={classes.textField}
               type="password"
               autoComplete="current-password"
+              onChange={this.handleChange('password')}
               margin="normal"
             />
-
+            <Button type="submit" variant="contained" color="primary" className={classes.button}>
+              Submit
+            </Button>
           </form>
-          <div>
-          <Button onClick={this.handleSubmit} variant="contained" color="primary" className={classes.button}>
-            Submit
-          </Button>
-          </div>
         </Paper>
       </div>
     )
