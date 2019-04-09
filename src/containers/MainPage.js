@@ -70,7 +70,7 @@ class MainPage extends Component {
     const { classes } = this.props;
 
     return (
-      <React.Fragment>
+      <div id="mainpage">
         <CssBaseline />
         <div style={{ padding: 10 }} className={classes.root}>
           <Grid container spacing={8}>
@@ -95,7 +95,7 @@ class MainPage extends Component {
             </Grid>
           </Grid>
         </div>
-      </ React.Fragment>
+      </div>
     );
   }
 }
