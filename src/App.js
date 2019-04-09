@@ -4,6 +4,7 @@ import ArtPane from './containers/ArtPane.js'
 import DialogPane from './containers/DialogPane.js'
 import InfoPane from './containers/InfoPane.js'
 import ActionPane from './containers/ActionPane.js'
+import GamePage from './containers/ActionPane.js'
 
 //material-ui:
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -74,32 +75,7 @@ class App extends Component {
     const { classes } = this.props;
 
     return (
-      <React.Fragment>
-        <CssBaseline />
-        <div style={{ padding: 10 }} className={classes.root}>
-          <Grid container spacing={8}>
-            <Grid item xs={12}>
-              <Paper className={classes.headerPaper}>
-                <Header />
-              </Paper>
-            </Grid>
-            <Grid item xs={8}>
-              <Paper className={classes.paper}>
-                <ArtPane />
-                <Divider />
-                <DialogPane />
-              </Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <InfoPane />
-                <Divider />
-                <ActionPane />
-              </Paper>
-            </Grid>
-          </Grid>
-        </div>
-      </ React.Fragment>
+<GamePage/>
     );
   }
 }
