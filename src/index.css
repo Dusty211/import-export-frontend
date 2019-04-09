@@ -23,6 +23,13 @@ code {
   max-width: 1440px;
 }
 
+#login-panel {
+  max-width: 400px;
+  padding-top: 200px;
+  margin: auto;
+  text-align: center;
+}
+
 #cash {
   text-align: center;
   font-size: 20px;
