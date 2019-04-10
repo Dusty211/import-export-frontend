@@ -25,6 +25,11 @@ const styles = {
   },
 };
 
+const logoutUser = (props) => {
+  props.handleUpdateUser({})
+  localStorage.removeItem('token')
+}
+
 const NavBar = (props) => {
 
   const { classes } = props;
@@ -38,8 +43,9 @@ const NavBar = (props) => {
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
           {/*Navbar text removed*/}
+          {`Welcome, ${props.user.username}!`}
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" onClick={() => logoutUser(props)} >Logout</Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -17,6 +17,22 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if(token){
+      fetch('http://localhost:3000/api/v1/profile',{
+        headers:{
+          "Authentication": `Bearer ${token}`
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        console.log("GET to profile success. Storing user state.")
+        this.handleUpdateUser(data.user)
+      })
+    }
+  }
+
   handleUpdateUser = (user) => {
     this.setState({user: user})
   }
@@ -29,7 +45,7 @@ class App extends Component {
         <Route exact path="/" render={()=> (<Redirect to="/profile" />)}/>
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <MainPage {...props} user={this.state.user}/>
+          <MainPage {...props} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
         }}
         />
         <Route exact path ="/login" render={(props) => {

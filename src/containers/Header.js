@@ -7,7 +7,7 @@ export default class Header extends Component {
   render() {
     return(
       <div>
-      <NavBar />
+      <NavBar handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/>
       </div>
     )
   }
