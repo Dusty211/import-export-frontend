@@ -49,7 +49,7 @@ const styles = theme => ({
   },
 });
 
-class Login extends Component {
+class CreateUser extends Component {
 
   constructor() {
     super()
@@ -62,25 +62,26 @@ class Login extends Component {
 
 };
 
-  handleSubmit = (e) => {
+  handleCreate = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/api/v1/login', {
-      method: "POST",
-      headers:{"Content-Type":"application/json", "Accept": "application/json"},
-      body:JSON.stringify({
-        user:{
-          username: this.state.username,
-          password:this.state.password}
-        })
-      }).then(r => r.json())
-      .then(data => {
-        if (data.authenticated){
-          this.props.handleUpdateUser(data.user)
-          localStorage.setItem('token', data.jwt)
-        }else{
-          alert("Invalid Credentials")
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: this.state.createUsername,
+          password: this.state.createPassword,
         }
-      }).catch(error=> console.log("Failed to Fetch:", error))
+      })
+    })
+  .then(r => r.json())
+  .then(data => {
+    this.props.handleUpdateUser(data.user)
+    localStorage.setItem('token', data.jwt)
+  }).catch(error=> console.log("Failed to Post:", error))
   }
 
   render() {
@@ -91,33 +92,33 @@ class Login extends Component {
       <div id="login-panel">
         <Paper className={classes.root} elevation={1}>
           <Typography variant="h5" component="h3">
-            Login
+            Create New Account
           </Typography>
-          <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+          <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleCreate}>
 
               <TextField
                 id="standard-name"
-                label="Username"
+                label="New Username"
                 className={classes.textField}
                 value={this.state.name}
-                onChange={this.handleChange('username')}
+                onChange={this.handleChange('createUsername')}
                 margin="normal"
               />
               <TextField
                 id="standard-password-input"
-                label="Password"
+                label="New Password"
                 className={classes.textField}
                 type="password"
                 autoComplete="current-password"
-                onChange={this.handleChange('password')}
+                onChange={this.handleChange('createPassword')}
                 margin="normal"
               />
 
               <Button type="submit" variant="contained" color="primary" className={classes.button}>
-                Submit
+                Create
               </Button>
 
-              <Link to="/create">Create a New User </Link>
+              <Link to="/login">Back to Login </Link>
 
           </form>
         </Paper>
@@ -128,8 +129,8 @@ class Login extends Component {
 
 }
 
-Login.propTypes = {
+CreateUser.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(CreateUser);

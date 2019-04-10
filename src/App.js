@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MainPage from './containers/MainPage.js'
 import Login from './components/Login.js'
+import CreateUser from './components/CreateUser.js'
 
 //React router
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -43,6 +44,11 @@ class App extends Component {
       <Switch>
       {/*below is for redirecting depeding on auth user with ternary*/}
         <Route exact path="/" render={()=> (<Redirect to="/profile" />)}/>
+        <Route exact path="/create" render={(props)=> {
+          return isEmpty(this.state.user) ? <CreateUser  {...props} handleUpdateUser={this.handleUpdateUser}/> :
+        <Redirect to="/profile" />
+      }}
+      />
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
           <MainPage {...props} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
