@@ -73,6 +73,7 @@ class Login extends Component {
       .then(data => {
         if (data.authenticated){
           this.props.handleUpdateUser(data.user)
+          localStorage.setItem('token', data.jwt)
         }else{
           alert("Invalid Credentials")
         }
