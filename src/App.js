@@ -75,7 +75,7 @@ class App extends Component {
         />
         <Route exact path ="/login" render={(props) => {
           return isEmpty(this.state.user) ? <Login {...props} handleUpdateUser={this.handleUpdateUser}/> :
-        <Redirect to="/profile" />
+        <Redirect to="/games" />
       }}
       />
       </Switch>

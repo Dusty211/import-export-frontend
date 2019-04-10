@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GamesList from '../components/GamesList.js'
+import { Link } from "react-router-dom";
 
 class Games extends Component {
 
@@ -51,7 +52,7 @@ class Games extends Component {
   render() {
     return(
       <div>
-      <button onClick={() => this.createGamestate(this.props)} >New Game</button>
+      <Link to="/profile"><button onClick={() => this.createGamestate(this.props)}>New Game</button></Link>
       <GamesList setCurrentGame={this.props.setCurrentGame} user={this.props.user}/>
       </div>
     )
