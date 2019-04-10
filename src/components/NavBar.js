@@ -30,6 +30,54 @@ const logoutUser = (props) => {
   localStorage.removeItem('token')
 }
 
+const createGamestate = (props) => {
+  // if (e) {e.preventDefault()}
+  let token = localStorage.getItem('token')
+  if(token){
+    fetch('http://localhost:3000/api/v1/gamestates',{
+      method: 'POST',
+      headers:{
+        "Authentication": `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        gamestate: {
+          company_name: 'test company',
+          cash: 70000,
+          luck: 50,
+          karma: 50,
+          heat: 0,
+          streetcred: 0,
+          xships: 1,
+          ship_lvl: 1,
+          xmercs: 0,
+          user_id: props.user.id,
+          savename: 'New Game',
+          // company_name: this.state.company_name,
+          // cash: this.state.cash,
+          // luck: this.state.luck,
+          // karma: this.state.karma,
+          // heat: this.state.heat,
+          // streetcred: this.state.heat,
+          // xships: this.state.xships,
+          // ship_lvl: this.state.ship_lvl,
+          // xmercs: this.state.xmercs,
+          // user_id: this.state.user_id,
+          // savename: this.state.savename,
+        }
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      // console.log("GET to profile success. Storing user state.")
+      console.log("props", props)
+      console.log("data:", data)
+      // this.handleUpdateUser(data.user)
+    })
+  }
+}
+
 const NavBar = (props) => {
 
   const { classes } = props;
@@ -45,6 +93,7 @@ const NavBar = (props) => {
           {/*Navbar text removed*/}
           {`Welcome, ${props.user.username}!`}
           </Typography>
+          <Button color="inherit" onClick={() => createGamestate(props)} >Create Gamestate</Button>
           <Button color="inherit" onClick={() => logoutUser(props)} >Logout</Button>
         </Toolbar>
       </AppBar>
