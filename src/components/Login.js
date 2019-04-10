@@ -74,7 +74,14 @@ class Login extends Component {
           password:this.state.password}
         })
       }).then(r => r.json())
-      .then(console.log)
+      .then(data => {
+        if (data.authenticated){
+          console.log('Login Success')
+        }else{
+          alert('Invalid Credentials')
+        }
+      }
+      )
 
   }
 
