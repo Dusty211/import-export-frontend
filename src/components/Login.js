@@ -56,7 +56,7 @@ class Login extends Component {
 
   handleChange = name => event => {
   this.setState({ [name]: event.target.value });
-  console.log(this.state)
+
 };
 
   componentDidMount() {
@@ -65,6 +65,16 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    fetch('http://localhost:3000/api/v1/login', {
+      method: "POST",
+      headers:{"Content-Type":"application/json", "Accept": "application/json"},
+      body:JSON.stringify({
+        user:{
+          username: this.state.username,
+          password:this.state.password}
+        })
+      }).then(r => r.json())
+      .then(console.log)
 
   }
 
