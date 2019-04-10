@@ -8,7 +8,7 @@ export default class DialogPane extends Component {
   render() {
     return(
       <div>
-      <Npc name={"Crazy Ed"}/>
+      <Npc name={"Some guy"}/>
       <Job />
       </div>
     )

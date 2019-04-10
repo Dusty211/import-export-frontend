@@ -60,7 +60,7 @@ class App extends Component {
 
         <Route exact path="/games" render={(props)=> {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <Games {...props} handleUpdateGamestate={this.handleUpdateGamestate} setCurrentGame={this.setCurrentGame} user={this.state.user}/>
+          <Games {...props} handleUpdateUser={this.handleUpdateUser} handleUpdateGamestate={this.handleUpdateGamestate} setCurrentGame={this.setCurrentGame} user={this.state.user}/>
         }}
         />
         <Route exact path="/create" render={(props)=> {

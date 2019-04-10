@@ -23,6 +23,11 @@ code {
   max-width: 1440px;
 }
 
+#gamepage {
+  margin: auto;
+  max-width: 1440px;
+}
+
 #login-panel {
   max-width: 400px;
   padding-top: 200px;

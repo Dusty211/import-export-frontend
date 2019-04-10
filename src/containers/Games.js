@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
+import Header from "./Header.js"
 import GamesList from '../components/GamesList.js'
+
+//react-router
 import { Link } from "react-router-dom";
+
+//material-ui
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  headerPaper: {
+    padding: 0,
+    textAlign: 'left',
+    color: theme.palette.text.secondary,
+    },
+});
 
 class Games extends Component {
 
@@ -50,14 +75,33 @@ class Games extends Component {
   }
 
   render() {
+
+    const { classes } = this.props;
+
     return(
-      <div>
-      <Link to="/profile"><button onClick={() => this.createGamestate(this.props)}>New Game</button></Link>
-      <GamesList setCurrentGame={this.props.setCurrentGame} user={this.props.user}/>
-      </div>
+<div id="gamepage" >
+      <div style={{ padding: 10 }} className={classes.root}>
+      <Grid container spacing={16}>
+        <Grid item xs={12}>
+          <Paper className={classes.headerPaper}><Header handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/></Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <GamesList setCurrentGame={this.props.setCurrentGame} user={this.props.user}/>
+            <Link to="/profile"><button onClick={() => this.createGamestate(this.props)}>New Game</button></Link>
+          </Paper>
+
+        </Grid>
+      </Grid>
+    </div>
+    </div>
     )
   }
 
 }
 
-export default Games
+Games.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Games);
