@@ -42,7 +42,7 @@ class MainPage extends Component {
           <Grid container spacing={8}>
             <Grid item xs={12}>
               <Paper className={classes.headerPaper}>
-                <Header  handleUpdateGamestate={this.props.handleUpdateGamestate} handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/>
+                <Header handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/>
               </Paper>
             </Grid>
             <Grid item xs={8}>

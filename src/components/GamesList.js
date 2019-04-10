@@ -6,7 +6,7 @@ const GamesList = (props) => {
 <div>
 <ul>
 {props.user.gamestates.map((gamestate) => {
-  return <GameSave key={gamestate.id} gamestate={gamestate}/>
+  return <GameSave key={gamestate.id} gamestate={gamestate} setCurrentGame={props.setCurrentGame} />
 })}
 </ul>
 </div>

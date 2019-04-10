@@ -15,7 +15,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: {}
+      user: {},
+      currentGame: null
     }
   }
 
@@ -34,6 +35,10 @@ class App extends Component {
         this.handleUpdateUser(data.user)
       })
     }
+  }
+
+  setCurrentGame = (id) => {
+    this.setState({currentGame: id})
   }
 
   handleUpdateUser = (user) => {
@@ -55,7 +60,7 @@ class App extends Component {
 
         <Route exact path="/games" render={(props)=> {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <Games {...props} user={this.state.user}/>
+          <Games {...props} handleUpdateGamestate={this.handleUpdateGamestate} setCurrentGame={this.setCurrentGame} user={this.state.user}/>
         }}
         />
         <Route exact path="/create" render={(props)=> {
@@ -65,7 +70,7 @@ class App extends Component {
       />
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <MainPage {...props}  handleUpdateGamestate={this.handleUpdateGamestate} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
+          <MainPage {...props} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
         }}
         />
         <Route exact path ="/login" render={(props) => {
