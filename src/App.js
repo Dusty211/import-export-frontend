@@ -29,6 +29,7 @@ class App extends Component {
       .then(r => r.json())
       .then(data => {
         console.log("GET to profile success. Storing user state.")
+        console.log("data:", data)
         this.handleUpdateUser(data.user)
       })
     }
