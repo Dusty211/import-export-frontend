@@ -33,8 +33,8 @@ class MainPage extends Component {
 
   componentDidMount() {
 
-  //   //create new user:
-  //
+    //create new user:
+
   //   fetch('http://localhost:3000/api/v1/users', {
   //     method: 'POST',
   //     headers: {

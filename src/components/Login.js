@@ -29,7 +29,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200,
+    width: 300,
   },
   dense: {
     marginTop: 19,
@@ -80,6 +80,28 @@ class Login extends Component {
       }).catch(error=> console.log("Failed to Fetch:", error))
   }
 
+  handleCreate = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: this.state.createUsername,
+          password: this.state.createPassword,
+        }
+      })
+    })
+  .then(r => r.json())
+  .then(data => {
+    this.props.handleUpdateUser(data.user)
+    localStorage.setItem('token', data.jwt)
+  }).catch(error=> console.log("Failed to Post:", error))
+  }
+
   render() {
 
     const { classes } = this.props;
@@ -115,7 +137,39 @@ class Login extends Component {
               </Button>
 
           </form>
+          <br/>
+          <br/>
+          <br/>
+          <Typography variant="h5" component="h3">
+            Create New Account
+          </Typography>
+          <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleCreate}>
+
+              <TextField
+                id="standard-name"
+                label="New Username"
+                className={classes.textField}
+                value={this.state.name}
+                onChange={this.handleChange('createUsername')}
+                margin="normal"
+              />
+              <TextField
+                id="standard-password-input"
+                label="New Password"
+                className={classes.textField}
+                type="password"
+                autoComplete="current-password"
+                onChange={this.handleChange('createPassword')}
+                margin="normal"
+              />
+
+              <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                Create
+              </Button>
+
+          </form>
         </Paper>
+
       </div>
     )
   }
