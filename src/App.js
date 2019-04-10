@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MainPage from './containers/MainPage.js'
 import Login from './components/Login.js'
 import CreateUser from './components/CreateUser.js'
+import Games from './containers/Games.js'
 
 //React router
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -39,12 +40,24 @@ class App extends Component {
     this.setState({user: user})
   }
 
+  handleUpdateGamestate = (gamestate) => {
+    this.setState({
+      user: {...this.state.user, gamestates: [...this.state.user.gamestates.filter(state => state.id !== gamestate.id), gamestate]}
+    })
+  }
+
   render() {
 
     return (
       <Switch>
       {/*below is for redirecting depeding on auth user with ternary*/}
         <Route exact path="/" render={()=> (<Redirect to="/profile" />)}/>
+
+        <Route exact path="/games" render={(props)=> {
+          return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
+          <Games {...props} user={this.state.user}/>
+        }}
+        />
         <Route exact path="/create" render={(props)=> {
           return isEmpty(this.state.user) ? <CreateUser  {...props} handleUpdateUser={this.handleUpdateUser}/> :
         <Redirect to="/profile" />
@@ -52,7 +65,7 @@ class App extends Component {
       />
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <MainPage {...props} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
+          <MainPage {...props}  handleUpdateGamestate={this.handleUpdateGamestate} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
         }}
         />
         <Route exact path ="/login" render={(props) => {

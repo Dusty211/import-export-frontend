@@ -11,6 +11,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 
 
+import { Link } from "react-router-dom";
+
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -71,9 +74,9 @@ const createGamestate = (props) => {
     .then(r => r.json())
     .then(data => {
       // console.log("GET to profile success. Storing user state.")
-      console.log("props", props)
-      console.log("data:", data)
-      // this.handleUpdateUser(data.user)
+      // console.log("props", props)
+      // console.log("data:", data)
+      props.handleUpdateGamestate(data.gamestate)
     })
   }
 }
@@ -93,6 +96,7 @@ const NavBar = (props) => {
           {/*Navbar text removed*/}
           {`Welcome, ${props.user.username}!`}
           </Typography>
+          <Link to="/games"><Button color="inherit" >Games</Button></Link>
           <Button color="inherit" onClick={() => createGamestate(props)} >Create Gamestate</Button>
           <Button color="inherit" onClick={() => logoutUser(props)} >Logout</Button>
         </Toolbar>
