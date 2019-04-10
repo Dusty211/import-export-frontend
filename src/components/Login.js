@@ -59,10 +59,6 @@ class Login extends Component {
 
 };
 
-  componentDidMount() {
-    console.log('Props:', this.props)
-  }
-
   handleSubmit = (e) => {
     e.preventDefault()
     fetch('http://localhost:3000/api/v1/login', {
@@ -76,13 +72,11 @@ class Login extends Component {
       }).then(r => r.json())
       .then(data => {
         if (data.authenticated){
-          console.log('Login Success')
+          this.props.handleUpdateUser(data.user)
         }else{
-          alert('Invalid Credentials')
+          alert("Invalid Credentials")
         }
-      }
-      )
-
+      }).catch(error=> console.log("Failed to Fetch:", error))
   }
 
   render() {
