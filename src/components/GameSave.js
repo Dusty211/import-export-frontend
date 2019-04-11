@@ -32,13 +32,24 @@ const styles = {
   },
 };
 
+const humanTime = (jsondate) => {
+  const date = jsondate.split('T')[0]
+  const time = jsondate.split('T')[1]
+  const year = date.split('-')[0]
+  const month = date.split('-')[1]
+  const day = date.split('-')[2]
+  const hr = time.split(':')[0]
+  const min = time.split(':')[1]
+  return `${hr}:${min} UTC ${month}/${day}/${year}`
+}
+
 const GameSave = (props) => {
 
   const { classes } = props;
 
   return(
-    <React.Fragment>
-    <Card className={classes.card}>
+
+    <Card id="game-card" className={classes.card}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {`${props.gamestate.savename}`}
@@ -46,15 +57,15 @@ const GameSave = (props) => {
         <Typography variant="h5" component="h2">
 {`${props.gamestate.company_name}`}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          {`Created: ${props.gamestate.created_at} -- Last Played: ${props.gamestate.updated_at}`}
+        <Typography component="div"><br/>
+          <div>{`Created: ${humanTime(props.gamestate.created_at)}`}</div>
+          <div>{`Saved: ${humanTime(props.gamestate.updated_at)}`}</div>
         </Typography>
         <Typography component="p">
           {`Cash: ${props.gamestate.cash}`}<br />
           {`Ships: ${props.gamestate.xships}`}<br />
           {`Ship lvl: ${props.gamestate.ship_lvl}`}<br />
           {`Mercs: ${props.gamestate.xmercs}`}<br />
-
         </Typography>
       </CardContent>
       <CardActions>
@@ -64,7 +75,7 @@ const GameSave = (props) => {
       </CardActions>
     </Card>
 
-    </ React.Fragment>
+
   )
 
 }

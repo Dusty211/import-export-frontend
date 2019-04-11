@@ -50,7 +50,7 @@ const NavBar = (props) => {
           {/*Navbar text removed*/}
           {`Welcome, ${props.user.username}!`}
           </Typography>
-          <Link to="/games"><Button color="inherit" >Games</Button></Link>
+          <Link style={{textDecoration: 'none', color: 'white'}} to="/games"><Button color="inherit" >Games</Button></Link>
           <Button color="inherit" onClick={() => logoutUser(props)} >Logout</Button>
         </Toolbar>
       </AppBar>
