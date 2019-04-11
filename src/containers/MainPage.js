@@ -31,6 +31,10 @@ paper: {
 
 class MainPage extends Component {
 
+  currentGamestate = (id) => {
+    return this.props.user.gamestates.find(state => state.id !== id)
+  }
+
   render() {
 
     const { classes } = this.props;
@@ -54,7 +58,7 @@ class MainPage extends Component {
             </Grid>
             <Grid item xs={4}>
               <Paper className={classes.paper}>
-                <InfoPane />
+                <InfoPane currentGamestate={() => this.currentGamestate(this.props.currentGame)} />
                 <Divider />
                 <ActionPane />
               </Paper>

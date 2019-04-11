@@ -9,14 +9,14 @@ export default class InfoPane extends Component {
   render() {
     return(
       <div>
-        <Cash cash={125000}/>
-        <StatBar stat={"Luck"} statValue={40}/>
-        <StatBar stat={"Karma"} statValue={50}/>
-        <StatBar stat={"Heat"} statValue={30}/>
-        <StatBar stat={"Street Cred"} statValue={80}/>
-        <ItemCount item={"Ships"} itemValue={3}/>
-        <ItemCount item={"Ship level"} itemValue={4}/>
-        <ItemCount item={"Mercenaries"} itemValue={34}/>
+        <Cash cash={this.props.currentGamestate().cash}/>
+        <StatBar stat={"Luck"} statValue={this.props.currentGamestate().luck}/>
+        <StatBar stat={"Karma"} statValue={this.props.currentGamestate().karma}/>
+        <StatBar stat={"Heat"} statValue={this.props.currentGamestate().heat}/>
+        <StatBar stat={"Street Cred"} statValue={this.props.currentGamestate().streetcred}/>
+        <ItemCount item={"Ships"} itemValue={this.props.currentGamestate().xships}/>
+        <ItemCount item={"Ship level"} itemValue={this.props.currentGamestate().ship_lvl}/>
+        <ItemCount item={"Mercenaries"} itemValue={this.props.currentGamestate().xmercs}/>
       </div>
     )
   }
