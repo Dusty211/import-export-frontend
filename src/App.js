@@ -16,7 +16,7 @@ class App extends Component {
     super()
     this.state = {
       user: {},
-      currentGame: null
+      currentGame: 0
     }
   }
 
@@ -70,7 +70,7 @@ class App extends Component {
       />
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <MainPage {...props} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
+          <MainPage {...props} setCurrentGame={this.setCurrentGame} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
         }}
         />
         <Route exact path ="/login" render={(props) => {

@@ -30,6 +30,7 @@ const styles = {
 
 const logoutUser = (props) => {
   props.handleUpdateUser({})
+  props.setCurrentGame(0)
   localStorage.removeItem('token')
 }
 

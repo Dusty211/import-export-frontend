@@ -69,6 +69,7 @@ class Games extends Component {
       })
       .then(r => r.json())
       .then(data => {
+        this.props.setCurrentGame(data.gamestate.id)
         this.props.handleUpdateGamestate(data.gamestate)
       })
     }
@@ -83,7 +84,7 @@ class Games extends Component {
       <div style={{ padding: 10 }} className={classes.root}>
       <Grid container spacing={16}>
         <Grid item xs={12}>
-          <Paper className={classes.headerPaper}><Header handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/></Paper>
+          <Paper className={classes.headerPaper}><Header setCurrentGame={this.props.setCurrentGame} handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/></Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
