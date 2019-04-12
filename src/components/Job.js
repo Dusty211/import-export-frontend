@@ -1,4 +1,5 @@
 import React from 'react';
+import JobOptions from './JobOptions.js'
 
 const Job = (props) => {
   return(
@@ -9,8 +10,7 @@ const Job = (props) => {
     {`Profit per shipment: ${props.nextJob.cargo_value}`}<br/><br/>
     {`${props.nextNpc.name} says: ${props.nextJob.job_text}`}<br/>
     </p>
-    job component
-    <button onClick={() => props.setLoopStage(1)}>loopstage</button>
+    <JobOptions jobOptions={props.nextJob.job_options} setLoopStage={props.setLoopStage}/>
     </div>
   )
 }
