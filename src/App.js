@@ -21,7 +21,25 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+
+  getGameData = () => {
+    let token = localStorage.getItem('token')
+    if(token){
+      fetch('http://localhost:3000/api/v1/npcs',{
+        headers:{
+          "Authentication": `Bearer ${token}`
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        console.log("GET to npcs success.")
+        console.log("npcs:", data)
+        this.initializeGameData(data)
+      })
+    }
+  }
+
+  getUserData = () => {
     let token = localStorage.getItem('token')
     if(token){
       fetch('http://localhost:3000/api/v1/profile',{
@@ -36,21 +54,6 @@ class App extends Component {
         this.handleUpdateUser(data.user)
       })
     }
-
-    if(token){
-      fetch('http://localhost:3000/api/v1/npcs',{
-        headers:{
-          "Authentication": `Bearer ${token}`
-        }
-      })
-      .then(r => r.json())
-      .then(data => {
-        console.log("GET to npcs success.")
-        console.log("npcs:", data)
-        this.initializeGameData(data)
-      })
-    }
-
   }
 
   setCurrentGame = (id) => {
@@ -71,6 +74,12 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+    this.getGameData()
+    this.getUserData()
+  }
+
+
   render() {
 
     return (
@@ -84,7 +93,7 @@ class App extends Component {
         }}
         />
         <Route exact path="/create" render={(props)=> {
-          return isEmpty(this.state.user) ? <CreateUser  {...props} handleUpdateUser={this.handleUpdateUser}/> :
+          return isEmpty(this.state.user) ? <CreateUser  {...props} getGameData={this.getGameData} handleUpdateUser={this.handleUpdateUser}/> :
         <Redirect to="/games" />
       }}
       />
@@ -94,7 +103,7 @@ class App extends Component {
         }}
         />
         <Route exact path ="/login" render={(props) => {
-          return isEmpty(this.state.user) ? <Login {...props} handleUpdateUser={this.handleUpdateUser}/> :
+          return isEmpty(this.state.user) ? <Login {...props} getGameData={this.getGameData} handleUpdateUser={this.handleUpdateUser}/> :
         <Redirect to="/games" />
       }}
       />

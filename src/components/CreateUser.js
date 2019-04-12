@@ -79,8 +79,9 @@ class CreateUser extends Component {
     })
   .then(r => r.json())
   .then(data => {
-    this.props.handleUpdateUser(data.user)
     localStorage.setItem('token', data.jwt)
+    this.props.getGameData()
+    this.props.handleUpdateUser(data.user)
   }).catch(error=> console.log("Failed to Post:", error))
   }
 

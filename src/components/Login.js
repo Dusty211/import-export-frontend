@@ -75,8 +75,9 @@ class Login extends Component {
       }).then(r => r.json())
       .then(data => {
         if (data.authenticated){
-          this.props.handleUpdateUser(data.user)
           localStorage.setItem('token', data.jwt)
+          this.props.getGameData()
+          this.props.handleUpdateUser(data.user)
         }else{
           alert("Invalid Credentials")
         }
