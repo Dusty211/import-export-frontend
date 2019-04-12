@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from './Header.js'
 import ArtPane from './ArtPane.js'
 import DialogPane from './DialogPane.js'
-import FeedbackPane from './FeedbackPane.js'
 import InfoPane from './InfoPane.js'
 import ActionPane from './ActionPane.js'
 
@@ -67,7 +66,7 @@ class MainPage extends Component {
               <Paper className={classes.paper}>
                 <ArtPane />
                 <Divider />
-                {this.state.loopStage === 0 ? <DialogPane setLoopStage={this.setLoopStage} /> : <FeedbackPane setLoopStage={this.setLoopStage}/>}
+                <DialogPane loopStage={this.state.loopStage} setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
             <Grid item xs={4}>
