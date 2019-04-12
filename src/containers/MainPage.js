@@ -48,7 +48,13 @@ class MainPage extends Component {
     return this.props.user.gamestates.find(state => state.id === id)
   }
 
+  nextJob = (jobs) => {
+    console.log(jobs)
+    return (`${Math.floor(Math.random() * 11)}`);
+  }
+
   render() {
+    // debugger;
 
     const { classes } = this.props;
 
@@ -66,7 +72,7 @@ class MainPage extends Component {
               <Paper className={classes.paper}>
                 <ArtPane />
                 <Divider />
-                <DialogPane loopStage={this.state.loopStage} setLoopStage={this.setLoopStage} />
+                <DialogPane nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData) : null} loopStage={this.state.loopStage} setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
             <Grid item xs={4}>
