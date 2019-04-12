@@ -16,7 +16,8 @@ class App extends Component {
     super()
     this.state = {
       user: {},
-      currentGame: 0
+      currentGame: 0,
+      gameData: {}
     }
   }
 
@@ -35,24 +36,22 @@ class App extends Component {
         this.handleUpdateUser(data.user)
       })
     }
+
+    if(token){
+      fetch('http://localhost:3000/api/v1/npcs',{
+        headers:{
+          "Authentication": `Bearer ${token}`
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        console.log("GET to npcs success.")
+        console.log("npcs:", data)
+        this.initializeGameData(data)
+      })
+    }
+
   }
-
-  // let token = localStorage.getItem('token')
-  // if(token){
-  //   fetch('http://localhost:3000/api/v1/npcs',{
-  //     headers:{
-  //       "Authentication": `Bearer ${token}`
-  //     }
-  //   })
-  //   .then(r => r.json())
-  //   .then(data => {
-  //     console.log("GET to npcs success.")
-  //     console.log("data:", data)
-  //     // this.handleUpdateUser(data.user)
-  //   })
-  // }
-
-
 
   setCurrentGame = (id) => {
     this.setState({currentGame: id})
@@ -60,6 +59,10 @@ class App extends Component {
 
   handleUpdateUser = (user) => {
     this.setState({user: user})
+  }
+
+  initializeGameData = (data) => {
+    this.setState({gameData: data})
   }
 
   handleUpdateGamestate = (gamestate) => {
@@ -87,7 +90,7 @@ class App extends Component {
       />
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <MainPage {...props} currentGame={this.state.currentGame} setCurrentGame={this.setCurrentGame} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
+          <MainPage {...props} gameData={this.state.gameData} currentGame={this.state.currentGame} setCurrentGame={this.setCurrentGame} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
         }}
         />
         <Route exact path ="/login" render={(props) => {
