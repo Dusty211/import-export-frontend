@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Header from "./Header.js"
 import GamesList from '../components/GamesList.js'
 
-//react-router
-import { Link } from "react-router-dom";
-
 //material-ui
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -71,6 +68,7 @@ class Games extends Component {
       .then(data => {
         this.props.setCurrentGame(data.gamestate.id)
         this.props.handleUpdateGamestate(data.gamestate)
+        this.props.history.push('/profile')
       })
     }
   }
@@ -89,9 +87,8 @@ class Games extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <GamesList setCurrentGame={this.props.setCurrentGame} user={this.props.user}/>
-            <Link to="/profile"><button onClick={() => this.createGamestate(this.props)}>New Game</button></Link>
+            <button onClick={() => this.createGamestate(this.props)}>New Game</button>
           </Paper>
-
         </Grid>
       </Grid>
     </div>

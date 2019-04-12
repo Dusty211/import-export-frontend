@@ -7,7 +7,9 @@ export default class InfoPane extends Component {
 
 
   render() {
+
     return(
+      
       <div>
         <Cash cash={this.props.currentGamestate().cash}/>
         <StatBar stat={"Luck"} statValue={this.props.currentGamestate().luck}/>

@@ -32,11 +32,11 @@ paper: {
 class MainPage extends Component {
 
   currentGamestate = (id) => {
-    return this.props.user.gamestates.find(state => state.id !== id)
+    return this.props.user.gamestates.find(state => state.id === id)
   }
 
   render() {
-
+    
     const { classes } = this.props;
 
     return (
