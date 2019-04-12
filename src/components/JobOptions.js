@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 //material-ui
 import PropTypes from 'prop-types';
@@ -15,26 +15,21 @@ const styles = theme => ({
   },
 });
 
-class JobOptions extends Component {
+const JobOptions = (props) => {
 
-  render() {
+  const { classes } = props;
 
-    const { classes } = this.props;
-
-      return(
-        <List component="nav" className={classes.root}>
-        {this.props.jobOptions.map(option => {
-          return (
-            <ListItem key={option.id} button divider onClick={() => this.props.setLoopStage(1)} >
-              <ListItemText secondary={option.option_text} />
-            </ListItem>
-          )
-        })}
-        </List>
+  return(
+    <List component="nav" className={classes.root}>
+    {props.jobOptions.map(option => {
+      return (
+        <ListItem key={option.id} button divider onClick={() => props.setLoopStage(1)} >
+          <ListItemText secondary={option.option_text} />
+        </ListItem>
       )
-  }
-
-
+    })}
+    </List>
+  )
 }
 
 JobOptions.propTypes = {
