@@ -37,6 +37,23 @@ class App extends Component {
     }
   }
 
+  // let token = localStorage.getItem('token')
+  // if(token){
+  //   fetch('http://localhost:3000/api/v1/npcs',{
+  //     headers:{
+  //       "Authentication": `Bearer ${token}`
+  //     }
+  //   })
+  //   .then(r => r.json())
+  //   .then(data => {
+  //     console.log("GET to npcs success.")
+  //     console.log("data:", data)
+  //     // this.handleUpdateUser(data.user)
+  //   })
+  // }
+
+
+
   setCurrentGame = (id) => {
     this.setState({currentGame: id})
   }
