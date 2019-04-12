@@ -6,12 +6,13 @@ import FeedbackPane from '../components/FeedbackPane.js';
 export default class DialogPane extends React.Component {
 
 
+
   render() {
-      console.log(this.props.nextJob)
+
     return(
       <div>
 
-      {this.props.loopStage === 0 ? <React.Fragment><Npc name={"Some guy"}/><Job setLoopStage={this.props.setLoopStage}/></React.Fragment> : <FeedbackPane setLoopStage={this.props.setLoopStage}/>}
+      {this.props.loopStage === 0 ? <React.Fragment><Npc name={this.props.nextJob.npc.name} shadiness={100 - this.props.nextJob.npc.npc_karma} /><Job nextJob={this.props.nextJob} setLoopStage={this.props.setLoopStage}/></React.Fragment> : <FeedbackPane setLoopStage={this.props.setLoopStage}/>}
       </div>
     )
   }

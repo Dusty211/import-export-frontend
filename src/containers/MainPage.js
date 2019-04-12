@@ -57,7 +57,7 @@ class MainPage extends Component {
         max_streetcred: npc.max_streetcred,
         min_streetcred: npc.min_streetcred,
         name: npc.name,
-        npc_karma: npc.karma
+        npc_karma: npc.npc_karma
       },
       job: {
         id: job.id,
@@ -68,7 +68,7 @@ class MainPage extends Component {
         job_options: [...job.job_options]
       }
     }
-    console.log(returnJob)
+    return returnJob
   }
 
   render() {
