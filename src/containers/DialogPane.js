@@ -5,7 +5,12 @@ import FeedbackPane from '../components/FeedbackPane.js';
 
 export default class DialogPane extends React.Component {
 
-
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     jobResult: {}
+  //   }
+  // }
 
   render() {
 
