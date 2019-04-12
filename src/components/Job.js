@@ -4,6 +4,7 @@ const Job = (props) => {
   return(
     <div id="job">
     job component
+    <button onClick={() => props.setLoopStage(1)}>loopstage</button>
     </div>
   )
 }

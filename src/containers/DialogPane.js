@@ -9,7 +9,7 @@ export default class DialogPane extends Component {
     return(
       <div>
       <Npc name={"Some guy"}/>
-      <Job />
+      <Job setLoopStage={this.props.setLoopStage}/>
       </div>
     )
   }

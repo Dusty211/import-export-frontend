@@ -21,7 +21,7 @@ const ActionButton = (props) => {
 
   return(
     <div id="action-button">
-      <Button variant="contained" color="primary" className={classes.button}>
+      <Button disabled={props.disabledButtons} variant="contained" color="primary" className={classes.button}>
         {props.action}
         <Icon className={classes.rightIcon}>{props.actionIcon}</Icon>
       </Button>

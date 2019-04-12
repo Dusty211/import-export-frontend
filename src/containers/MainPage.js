@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header.js'
 import ArtPane from './ArtPane.js'
 import DialogPane from './DialogPane.js'
+import FeedbackPane from './FeedbackPane.js'
 import InfoPane from './InfoPane.js'
 import ActionPane from './ActionPane.js'
 
@@ -31,6 +32,19 @@ paper: {
 
 class MainPage extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      loopStage: 0,
+      disabledButtons: true
+    }
+  }
+
+  setLoopStage = (stage) => {
+    this.setState({loopStage: stage})
+    this.setState({disabledButtons: !this.state.disabledButtons})
+  }
+
   currentGamestate = (id) => {
     return this.props.user.gamestates.find(state => state.id === id)
   }
@@ -53,14 +67,14 @@ class MainPage extends Component {
               <Paper className={classes.paper}>
                 <ArtPane />
                 <Divider />
-                <DialogPane />
+                {this.state.loopStage === 0 ? <DialogPane setLoopStage={this.setLoopStage} /> : <FeedbackPane setLoopStage={this.setLoopStage}/>}
               </Paper>
             </Grid>
             <Grid item xs={4}>
               <Paper className={classes.paper}>
                 <InfoPane currentGamestate={() => this.currentGamestate(this.props.currentGame)} />
                 <Divider />
-                <ActionPane />
+                <ActionPane disabledButtons={this.state.disabledButtons}/>
               </Paper>
             </Grid>
           </Grid>
