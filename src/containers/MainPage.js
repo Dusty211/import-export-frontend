@@ -48,13 +48,31 @@ class MainPage extends Component {
     return this.props.user.gamestates.find(state => state.id === id)
   }
 
-  nextJob = (jobs) => {
-    console.log(jobs)
-    return (`${Math.floor(Math.random() * 11)}`);
+  nextJob = (gameData) => {
+    let npc = gameData[Math.floor(Math.random() * gameData.length)]
+    let job = npc.jobs[Math.floor(Math.random() * npc.jobs.length)]
+    let returnJob = {
+      npc: {
+        id: npc.id,
+        max_streetcred: npc.max_streetcred,
+        min_streetcred: npc.min_streetcred,
+        name: npc.name,
+        npc_karma: npc.karma
+      },
+      job: {
+        id: job.id,
+        cargo: job.cargo,
+        cargo_value: job.cargo_value,
+        streetcred_mod: job.streetcred_mod,
+        job_text: job.job_text,
+        job_options: [...job.job_options]
+      }
+    }
+    console.log(returnJob)
   }
 
   render() {
-    // debugger;
+// debugger;
 
     const { classes } = this.props;
 
