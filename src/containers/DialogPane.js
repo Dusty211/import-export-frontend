@@ -1,7 +1,7 @@
 import React from 'react';
 import Npc from '../components/Npc.js';
 import Job from '../components/Job.js';
-import FeedbackPane from '../containers/FeedbackPane.js';
+import FeedbackPane from '../components/FeedbackPane.js';
 
 export default class DialogPane extends React.Component {
 
