@@ -18,12 +18,14 @@ const styles = theme => ({
 const JobOptions = (props) => {
 
   const { classes } = props;
+  // debugger;
 
   return(
     <List component="nav" className={classes.root}>
-    {props.jobOptions.map(option => {
+    {props.jobOptions.map((option, index) => {
       return (
-        <ListItem key={option.id} button divider onClick={() => props.setLoopStage(1)} >
+        /*<ListItem key={option.id} button divider onClick={() => props.setLoopStage(1)} >*/
+        <ListItem key={option.id} button divider onClick={() => props.handleOptionSelection(index)} >
           <ListItemText secondary={option.option_text} />
         </ListItem>
       )

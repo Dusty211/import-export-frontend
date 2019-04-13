@@ -10,7 +10,7 @@ const Job = (props) => {
     {`Profit per shipment: ${props.nextJob.cargo_value}`}<br/><br/>
     {`${props.nextNpc.name} says: ${props.nextJob.job_text}`}<br/>
     </p>
-    <JobOptions jobOptions={props.nextJob.job_options} setLoopStage={props.setLoopStage}/>
+    <JobOptions handleOptionSelection={props.handleOptionSelection} jobOptions={props.nextJob.job_options} setLoopStage={props.setLoopStage}/>
     </div>
   )
 }
