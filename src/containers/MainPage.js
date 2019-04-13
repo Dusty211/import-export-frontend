@@ -91,7 +91,7 @@ class MainPage extends Component {
               <Paper className={classes.paper}>
                 <ArtPane />
                 <Divider />
-                <DialogPane nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData) : null} loopStage={this.state.loopStage} setLoopStage={this.setLoopStage} />
+                <DialogPane nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
             <Grid item xs={4}>
