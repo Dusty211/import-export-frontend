@@ -12,13 +12,15 @@ export default class DialogPane extends React.Component {
     }
   }
 
-  handleOptionSelection = (index, currentGamestate) => {
+  handleOptionSelection = (index, currentGamestate, nextJob) => {
     if (index === 1) {  //risky option
       console.log('risk option')
+      console.log('next job:', nextJob)
     }else{  //safe option
       console.log(currentGamestate)
-
+      console.log('next job:', nextJob)
     }
+    this.props.setLoopStage(1)
   }
 
   render() {
@@ -29,7 +31,7 @@ export default class DialogPane extends React.Component {
       {this.props.loopStage === 0 ?
         <React.Fragment>
           <Npc name={this.props.nextJob.npc.name} shadiness={100 - this.props.nextJob.npc.npc_karma} />
-          <Job currentGamestate={this.props.currentGamestate} handleOptionSelection={this.handleOptionSelection} nextJob={this.props.nextJob.job} nextNpc={this.props.nextJob.npc}setLoopStage={this.props.setLoopStage}/>
+          <Job currentGamestate={this.props.currentGamestate} handleOptionSelection={this.handleOptionSelection} nextJob={this.props.nextJob} />
         </React.Fragment> :
           <FeedbackPane setLoopStage={this.props.setLoopStage}/>}
       </div>
