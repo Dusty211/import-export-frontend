@@ -48,8 +48,15 @@ class MainPage extends Component {
     return this.props.user.gamestates.find(state => state.id === id)
   }
 
-  nextJob = (gameData) => {
-    let npc = gameData[Math.floor(Math.random() * gameData.length)]
+  nextJob = (gameData, currentGamestate) => {
+    let npc;
+    console.log('currentGamestate.streetcred', currentGamestate.streetcred)
+    npc = gameData[Math.floor(Math.random() * gameData.length)]
+    console.log('npc min_streetcred', npc.min_streetcred)
+    console.log('npc max_streetcred', npc.max_streetcred)
+    while (npc.min_streetcred > currentGamestate.streetcred || npc.max_streetcred < currentGamestate.streetcred) {
+      npc = gameData[Math.floor(Math.random() * gameData.length)]
+    }
     let job = npc.jobs[Math.floor(Math.random() * npc.jobs.length)]
     let returnJob = {
       npc: {
@@ -91,7 +98,7 @@ class MainPage extends Component {
               <Paper className={classes.paper}>
                 <ArtPane />
                 <Divider />
-                <DialogPane nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
+                <DialogPane nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
             <Grid item xs={4}>
