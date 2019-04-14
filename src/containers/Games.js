@@ -44,7 +44,7 @@ class Games extends Component {
             luck: 50,
             karma: 50,
             heat: 0,
-            streetcred: 0,
+            streetcred: 50,
             xships: 1,
             ship_lvl: 1,
             xmercs: 0,

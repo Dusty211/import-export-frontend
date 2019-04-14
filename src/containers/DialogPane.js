@@ -3,6 +3,9 @@ import Npc from '../components/Npc.js';
 import Job from '../components/Job.js';
 import FeedbackPane from '../components/FeedbackPane.js';
 
+//gamelogic
+import { karmaRoll } from '../DiceRolls.js'
+
 export default class DialogPane extends React.Component {
 
   constructor() {
@@ -12,14 +15,29 @@ export default class DialogPane extends React.Component {
     }
   }
 
-  handleOptionSelection = (index, currentGamestate, thisJob) => {
-    if (index === 1) {  //risky option
-      console.log('risk option')
-      console.log('this job:', thisJob)
-    }else{  //safe option
-      console.log(currentGamestate)
-      console.log('this job:', thisJob)
+  handleOptionSelection = (index, thisJob) => {
+    let challengeOption = 'unselected';
+    let jobResult = {
+      cash: this.props.currentGamestate().cash,
+      karma: this.props.currentGamestate().karma,
+      heat: this.props.currentGamestate().heat,
+      streetcred: this.props.currentGamestate().streetcred,
+      xships: this.props.currentGamestate().xships
     }
+    console.log('cash: ', jobResult.cash)
+    console.log('karma: ', jobResult.karma)
+    console.log('heat: ', jobResult.heat)
+    console.log('streetcred: ', jobResult.streetcred)
+    console.log('xships: ', jobResult.xships)
+    if (index === 1) {  //challenge option
+      if (karmaRoll(thisJob.npc.npc_karma, this.props.currentGamestate.karma)) {
+        challengeOption = 'successful';
+      }else{
+        challengeOption = 'failed';
+      }
+    }
+
+    console.log('challengeOption:', challengeOption)
     this.props.setLoopStage(1)
   }
 
@@ -31,7 +49,7 @@ export default class DialogPane extends React.Component {
       {this.props.loopStage === 0 ?
         <React.Fragment>
           <Npc name={this.props.nextJob.npc.name} shadiness={100 - this.props.nextJob.npc.npc_karma} />
-          <Job currentGamestate={this.props.currentGamestate} handleOptionSelection={this.handleOptionSelection} nextJob={this.props.nextJob} />
+          <Job handleOptionSelection={this.handleOptionSelection} nextJob={this.props.nextJob} />
         </React.Fragment> :
           <FeedbackPane setLoopStage={this.props.setLoopStage}/>}
       </div>

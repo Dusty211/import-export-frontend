@@ -24,7 +24,7 @@ const JobOptions = (props) => {
     <List component="nav" className={classes.root}>
     {props.nextJob.job.job_options.map((option, index) => {
       return (
-        <ListItem key={option.id} button divider onClick={() => props.handleOptionSelection(index, props.currentGamestate(), props.nextJob)} >
+        <ListItem key={option.id} button divider onClick={() => props.handleOptionSelection(index, props.nextJob)} >
           <ListItemText secondary={option.option_text} />
         </ListItem>
       )

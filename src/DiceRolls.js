@@ -1,20 +1,20 @@
 
 
 
-
-function rollFuncTester(cb) {
-
-  const resultsArray = []
-  const iterations = [...Array(1000).keys()]
-  iterations.forEach(num => {
-    resultsArray.push(cb())
-  })
-
-  console.log("% true for 1000: ", resultsArray.filter(res => {
-    return res === true
-  }).length / 10)
-
-}
+// debug:
+// function rollFuncTester(cb) {
+//
+//   const resultsArray = []
+//   const iterations = [...Array(1000).keys()]
+//   iterations.forEach(num => {
+//     resultsArray.push(cb())
+//   })
+//
+//   console.log("% true for 1000: ", resultsArray.filter(res => {
+//     return res === true
+//   }).length / 10)
+//
+// }
 
 export function luckRoll(luck){
 
