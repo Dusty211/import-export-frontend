@@ -34,8 +34,8 @@ export default class DialogPane extends React.Component {
       }
     }
 
-    if (index !== 3) { //skip option
-      console.log('skip option')
+    if (index !== 2) { //skip option
+      console.log("not skip option")
     }
 
     console.log('challengeOption:', challengeOption)
