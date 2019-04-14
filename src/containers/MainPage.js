@@ -50,10 +50,7 @@ class MainPage extends Component {
 
   nextJob = (gameData, currentGamestate) => {
     let npc;
-    console.log('currentGamestate.streetcred', currentGamestate.streetcred)
     npc = gameData[Math.floor(Math.random() * gameData.length)]
-    console.log('npc min_streetcred', npc.min_streetcred)
-    console.log('npc max_streetcred', npc.max_streetcred)
     while (npc.min_streetcred > currentGamestate.streetcred || npc.max_streetcred < currentGamestate.streetcred) {
       npc = gameData[Math.floor(Math.random() * gameData.length)]
     }
