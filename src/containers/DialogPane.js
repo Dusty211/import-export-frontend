@@ -4,7 +4,7 @@ import Job from '../components/Job.js';
 import FeedbackPane from '../components/FeedbackPane.js';
 
 //gamelogic
-import { karmaRoll } from '../DiceRolls.js'
+import { karmaRoll, heatRoll, shakedownRoll, luckRoll } from '../DiceRolls.js'
 
 export default class DialogPane extends React.Component {
 
@@ -16,6 +16,7 @@ export default class DialogPane extends React.Component {
   }
 
   handleOptionSelection = (index, thisJob) => {
+
     let challengeOption = 'unselected';
     let jobResult = {
       cash: this.props.currentGamestate().cash,
@@ -24,17 +25,17 @@ export default class DialogPane extends React.Component {
       streetcred: this.props.currentGamestate().streetcred,
       xships: this.props.currentGamestate().xships
     }
-    console.log('cash: ', jobResult.cash)
-    console.log('karma: ', jobResult.karma)
-    console.log('heat: ', jobResult.heat)
-    console.log('streetcred: ', jobResult.streetcred)
-    console.log('xships: ', jobResult.xships)
+
     if (index === 1) {  //challenge option
       if (karmaRoll(thisJob.npc.npc_karma, this.props.currentGamestate.karma)) {
         challengeOption = 'successful';
       }else{
         challengeOption = 'failed';
       }
+    }
+
+    if (index !== 3) { //skip option
+      console.log('skip option')
     }
 
     console.log('challengeOption:', challengeOption)
