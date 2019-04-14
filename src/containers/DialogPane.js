@@ -12,13 +12,13 @@ export default class DialogPane extends React.Component {
     }
   }
 
-  handleOptionSelection = (index, currentGamestate, nextJob) => {
+  handleOptionSelection = (index, currentGamestate, thisJob) => {
     if (index === 1) {  //risky option
       console.log('risk option')
-      console.log('next job:', nextJob)
+      console.log('this job:', thisJob)
     }else{  //safe option
       console.log(currentGamestate)
-      console.log('next job:', nextJob)
+      console.log('this job:', thisJob)
     }
     this.props.setLoopStage(1)
   }
