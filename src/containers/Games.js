@@ -50,17 +50,6 @@ class Games extends Component {
             xmercs: 0,
             user_id: this.props.user.id,
             savename: 'New Game',
-            // company_name: this.state.company_name,
-            // cash: this.state.cash,
-            // luck: this.state.luck,
-            // karma: this.state.karma,
-            // heat: this.state.heat,
-            // streetcred: this.state.heat,
-            // xships: this.state.xships,
-            // ship_lvl: this.state.ship_lvl,
-            // xmercs: this.state.xmercs,
-            // user_id: this.state.user_id,
-            // savename: this.state.savename,
           }
         })
       })

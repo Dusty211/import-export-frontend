@@ -75,6 +75,41 @@ class MainPage extends Component {
     return returnJob
   }
 
+  patchGamestate = (dataArgs) => {
+    let token = localStorage.getItem('token')
+    if(token){
+      fetch(`http://localhost:3000/api/v1/gamestates/${this.props.currentGame}`,{
+        method: 'PATCH',
+        headers:{
+          "Authentication": `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          gamestate: {
+            company_name: dataArgs.company_name,
+            cash: dataArgs.cash,
+            luck: dataArgs.luck,
+            karma: dataArgs.karma,
+            heat: dataArgs.heat,
+            streetcred: dataArgs.streetcred,
+            xships: dataArgs.xships,
+            ship_lvl: dataArgs.ship_lvl,
+            xmercs: dataArgs.xmercs,
+            user_id: dataArgs.user_id,
+            savename: dataArgs.savename
+          }
+        })
+      })
+      .then(r => r.json())
+      .then(data => {
+        this.props.handleUpdateGamestate(data.gamestate)
+        this.setLoopStage(1)
+        // this.props.history.push('/profile')
+      })
+    }
+  }
+
 
   render() {
 // debugger;
@@ -95,7 +130,7 @@ class MainPage extends Component {
               <Paper className={classes.paper}>
                 <ArtPane />
                 <Divider />
-                <DialogPane nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
+                <DialogPane patchGamestate={this.patchGamestate} nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
             <Grid item xs={4}>

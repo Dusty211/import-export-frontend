@@ -23,6 +23,7 @@ export default class DialogPane extends React.Component {
     let losingRoll = 'none';
     let cargoVal = thisJob.job.cargo_value;
     let jobResult = {
+      company_name: this.props.currentGamestate().company_name,
       cash: this.props.currentGamestate().cash,
       luck: this.props.currentGamestate().luck,
       karma: this.props.currentGamestate().karma,
@@ -30,7 +31,9 @@ export default class DialogPane extends React.Component {
       streetcred: this.props.currentGamestate().streetcred,
       xships: this.props.currentGamestate().xships,
       ship_lvl: this.props.currentGamestate().ship_lvl,
-      xmercs: this.props.currentGamestate().xmercs
+      xmercs: this.props.currentGamestate().xmercs,
+      user_id: this.props.currentGamestate().user_id,
+      savename: this.props.currentGamestate().savename
     }
 
     //instant affects of decision:
@@ -97,10 +100,11 @@ export default class DialogPane extends React.Component {
     console.log('challengeOption:', challengeOption)
 
     //sending
-    jobResult
+    // jobResult
 
     this.setState({rollResult: losingRoll, karmaResult: challengeOption, jobChoice: jobIndex});
-    this.props.setLoopStage(1)
+    this.props.patchGamestate(jobResult)
+
   }
 
   render() {

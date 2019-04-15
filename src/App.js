@@ -99,7 +99,7 @@ class App extends Component {
       />
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <MainPage {...props} gameData={this.state.gameData} currentGame={this.state.currentGame} setCurrentGame={this.setCurrentGame} handleUpdateUser={this.handleUpdateUser} user={this.state.user}/>
+          <MainPage {...props} gameData={this.state.gameData} currentGame={this.state.currentGame} setCurrentGame={this.setCurrentGame} handleUpdateUser={this.handleUpdateUser} user={this.state.user} handleUpdateGamestate={this.handleUpdateGamestate}/>
         }}
         />
         <Route exact path ="/login" render={(props) => {
