@@ -11,7 +11,7 @@ export default class DialogPane extends React.Component {
   constructor() {
     super()
     this.state = {
-      karmaResult: 'none', 
+      karmaResult: 'none',
       rollResult: 'none',
       jobChoice: null,
       jobProfit: 0

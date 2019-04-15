@@ -13,6 +13,9 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
+//background image
+import Image from '../images/ship1.jpg'
+
 const styles = theme => ({
 root: {
   flexGrow: 1,
@@ -26,6 +29,12 @@ paper: {
     padding: 0,
     textAlign: 'left',
     color: theme.palette.text.secondary,
+    },
+  dialogPaper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'left',
+    color: theme.palette.text.secondary,
+    backgroundImage: `url(${Image})`
     },
 });
 
@@ -124,7 +133,7 @@ class MainPage extends Component {
               </Paper>
             </Grid>
             <Grid item xs={8}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.dialogPaper}>
                 <ArtPane />
                 <Divider />
                 <DialogPane patchGamestate={this.patchGamestate} nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />

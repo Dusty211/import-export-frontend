@@ -23,6 +23,10 @@ code {
   max-width: 1440px;
 }
 
+#dialog-pane {
+  background-image: url('./images/ship1.jpg');
+}
+
 #gamepage {
   margin: auto;
   max-width: 1440px;
