@@ -26,23 +26,23 @@ function percentify(number) {
   }
 }
 
-export function luckRoll(luck, returnChance=false){
+export function luckRoll(luck){
 
   let higherLuckChance = -(0.6 * luck) + 50.0
   let lowerLuckChance = -(2.6 * luck) + 90.0
 
   if (higherLuckChance >= lowerLuckChance) {
-    return returnChance ? percentify(higherLuckChance) : Math.floor(Math.random() * 101) < higherLuckChance
+    return Math.floor(Math.random() * 101) < higherLuckChance
   }else{
-    return returnChance ? percentify(lowerLuckChance) : Math.floor(Math.random() * 101) <= lowerLuckChance
+    return Math.floor(Math.random() * 101) <= lowerLuckChance
   }
 }
 
-export function shakedownRoll(streetcred, xmercs, returnChance=false){
+export function shakedownRoll(streetcred, xmercs){
 
   const chance = -(0.6 * streetcred) + (40.0 - xmercs)
 
-  return returnChance ? percentify(chance) : Math.floor(Math.random() * 101) < chance
+  return Math.floor(Math.random() * 101) < chance
 }
 
 export function karmaRoll(karma1, karma2, returnChance=false) {
@@ -57,23 +57,15 @@ export function karmaRoll(karma1, karma2, returnChance=false) {
   }
 }
 
-export function heatRoll(heat, returnChance=false) {
+export function heatRoll(heat, ship_lvl) {
 
-  const higherHeatChance = (1.5 * heat) - 85.0
-  const lowerHeatChance = (0.5 * heat) - 5
+  const higherHeatChance = (1.5 * heat) - (85.0 - ship_lvl * 2)
+  const lowerHeatChance = (0.5 * heat) - (5 - ship_lvl * 2)
 
   if (higherHeatChance >= lowerHeatChance) {
-    return returnChance ? percentify(higherHeatChance) : Math.floor(Math.random() * 101) < higherHeatChance
+    return Math.floor(Math.random() * 101) < higherHeatChance
   }else{
-    return returnChance ? percentify(lowerHeatChance) : Math.floor(Math.random() * 101) <= lowerHeatChance
-  }
-
-  if (returnChance) {
-    return higherHeatChance >= lowerHeatChance ? higherHeatChance : lowerHeatChance
-  }else if (lowerHeatChance >= higherHeatChance){
-    return Math.floor(Math.random() * 101) < lowerHeatChance
-  }else{
-    return Math.floor(Math.random() * 101) <= higherHeatChance
+    return Math.floor(Math.random() * 101) <= lowerHeatChance
   }
 
 }
