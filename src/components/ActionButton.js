@@ -19,9 +19,15 @@ const ActionButton = (props) => {
 
   const { classes } = props;
 
+  const isDisabled = (disabledProp) => {
+    if (disabledProp || props.actionCost > props.currentGamestate.cash) {
+      return true
+    }
+  }
+
   return(
     <div id="action-button">
-      <Button disabled={props.disabledButtons} variant="contained" color="primary" className={classes.button}>
+      <Button onClick={props.clickCb} disabled={isDisabled(props.disabledButtons)} variant="contained" color="primary" className={classes.button}>
         {props.action}
         <Icon className={classes.rightIcon}>{props.actionIcon}</Icon>
       </Button>

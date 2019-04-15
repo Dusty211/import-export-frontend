@@ -94,7 +94,7 @@ class MainPage extends Component {
     return returnJob
   }
 
-  patchGamestate = (dataArgs) => {
+  patchGamestate = (dataArgs, loopStage) => {
     let token = localStorage.getItem('token')
     if(token){
       fetch(`http://localhost:3000/api/v1/gamestates/${this.props.currentGame}`,{
@@ -120,7 +120,7 @@ class MainPage extends Component {
       .then(r => r.json())
       .then(data => {
         this.props.handleUpdateGamestate(data.gamestate)
-        this.setLoopStage(1)
+        this.setLoopStage(loopStage)
         // this.props.history.push('/profile')
       })
     }
@@ -151,7 +151,7 @@ class MainPage extends Component {
               <Paper className={classes.infoPaper}>
                 <InfoPane currentGamestate={() => this.currentGamestate(this.props.currentGame)} />
                 <Divider />
-                <ActionPane disabledButtons={this.state.disabledButtons}/>
+                <ActionPane patchGamestate={this.patchGamestate} disabledButtons={this.state.disabledButtons} currentGamestate={this.currentGamestate(this.props.currentGame)}/>
               </Paper>
             </Grid>
           </Grid>

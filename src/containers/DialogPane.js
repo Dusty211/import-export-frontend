@@ -120,7 +120,7 @@ export default class DialogPane extends React.Component {
     profit = jobResult.cash - this.props.currentGamestate().cash
 
     this.setState({rollResult: losingRoll, karmaResult: challengeOption, jobChoice: jobIndex, jobProfit: profit });
-    this.props.patchGamestate(jobResult)
+    this.props.patchGamestate(jobResult, 1)
 
   }
 
