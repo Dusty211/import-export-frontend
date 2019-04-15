@@ -127,7 +127,7 @@ export default class DialogPane extends React.Component {
   render() {
 
     return(
-      <div>
+      <div id="inner-dialog-pane">
 
       {this.props.loopStage === 0 ?
         <React.Fragment>

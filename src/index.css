@@ -15,7 +15,7 @@ code {
 }
 
 #mainbody {
-  background-color: darkgrey;
+  background: rgba(30, 30, 30, 1)
 }
 
 #mainpage {
@@ -23,8 +23,9 @@ code {
   max-width: 1440px;
 }
 
-#dialog-pane {
-  background-image: url('./images/ship1.jpg');
+#inner-dialog-pane {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
 }
 
 #gamepage {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from './Header.js'
-import ArtPane from './ArtPane.js'
 import DialogPane from './DialogPane.js'
 import InfoPane from './InfoPane.js'
 import ActionPane from './ActionPane.js'
@@ -14,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
 //background image
-import Image from '../images/ship1.jpg'
+import Image from '../images/ship0.jpg'
 
 const styles = theme => ({
 root: {
@@ -33,8 +32,13 @@ paper: {
   dialogPaper: {
     padding: theme.spacing.unit * 2,
     textAlign: 'left',
-    color: theme.palette.text.secondary,
-    backgroundImage: `url(${Image})`
+    // color: theme.palette.text.secondary,
+    color: 'white',
+    backgroundImage: `url(${Image})`,
+    backgroundSize: "100%",
+    backgroundPosition: "center center",
+    // backgroundAttachment: "fixed",
+    height: "100%"
     },
 });
 
@@ -134,8 +138,7 @@ class MainPage extends Component {
             </Grid>
             <Grid item xs={8}>
               <Paper className={classes.dialogPaper}>
-                <ArtPane />
-                <Divider />
+
                 <DialogPane patchGamestate={this.patchGamestate} nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
