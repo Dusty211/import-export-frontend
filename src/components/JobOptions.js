@@ -12,7 +12,7 @@ const styles = theme => ({
     width: '100%',
     maxWidth: 'auto',
     // backgroundColor: theme.palette.background.paper,
-    backgroundColor: 'darkgrey',
+    backgroundColor: 'lightgrey',
   },
 });
 

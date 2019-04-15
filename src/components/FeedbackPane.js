@@ -89,7 +89,7 @@ export default class FeedbackPane extends Component {
       `How about this: I give you double the initial offer, and then you give me back triple the original offer... (Haggle Fail)`,
       `*Stares directly at you angrily* (Haggle Fail)`,
       `I think I will just stick with my original plan of shorting you on our originial agreement.(Haggle Fail)`,
-      `You are one sleezy #&%$. You aren't allowed within a thousand feet of a used car lot, am I right? Do you haggle with vending machines? (Haggle Fail)`,
+      `You aren't allowed within a thousand feet of a used car lot, am I right? Do you haggle with vending machines? (Haggle Fail)`,
     ]
 
     if (successful === 'successful') {
@@ -102,7 +102,7 @@ export default class FeedbackPane extends Component {
       `Hmm... Someone who never settles for the initial offer...`,
       `So this is not a haggle-free shipyard?`,
       `My cousin is just like you. He negotiates for literally everything.`,
-      `Wow ok... Did I accidentally step into a car dealership?.`,
+      `Wow ok...`,
     ]
     const choice = outcomes[Math.floor(Math.random()*outcomes.length)];
     return `${choice} ${second}`

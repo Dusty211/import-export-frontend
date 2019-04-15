@@ -24,6 +24,12 @@ paper: {
   textAlign: 'left',
   color: theme.palette.text.secondary,
   },
+  infoPaper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'left',
+    backgroundColor: 'lightgrey',
+    color: theme.palette.text.secondary,
+    },
   headerPaper: {
     padding: 0,
     textAlign: 'left',
@@ -138,12 +144,11 @@ class MainPage extends Component {
             </Grid>
             <Grid item xs={8}>
               <Paper className={classes.dialogPaper}>
-
                 <DialogPane patchGamestate={this.patchGamestate} nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
             <Grid item xs={4}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.infoPaper}>
                 <InfoPane currentGamestate={() => this.currentGamestate(this.props.currentGame)} />
                 <Divider />
                 <ActionPane disabledButtons={this.state.disabledButtons}/>
