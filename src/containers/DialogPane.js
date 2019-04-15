@@ -11,9 +11,10 @@ export default class DialogPane extends React.Component {
   constructor() {
     super()
     this.state = {
-      karmaResult: 'none', // 0 = N/A, 1 = fail, 2 = success
+      karmaResult: 'none', 
       rollResult: 'none',
-      jobChoice: null
+      jobChoice: null,
+      jobProfit: 0
     }
   }
 
@@ -21,6 +22,7 @@ export default class DialogPane extends React.Component {
 
     let challengeOption = 'none';
     let losingRoll = 'none';
+    let profit = 0;
     let cargoVal = thisJob.job.cargo_value;
     let jobResult = {
       cash: this.props.currentGamestate().cash,
@@ -33,9 +35,21 @@ export default class DialogPane extends React.Component {
       xmercs: this.props.currentGamestate().xmercs,
     }
 
+    const validateStatValue = (value) => {
+      if (value > 100) {
+        value = 100
+      }
+      if (value < 0) {
+        value = 0
+      }
+      return value
+    }
+
     //instant affects of decision:
     jobResult.karma += thisJob.job.job_options[jobIndex].morality
+    jobResult.karma = validateStatValue(jobResult.karma)
     jobResult.heat += thisJob.job.job_options[jobIndex].criminality
+    jobResult.heat = validateStatValue(jobResult.heat)
 
     cargoVal *= jobResult.xships
 
@@ -71,17 +85,21 @@ export default class DialogPane extends React.Component {
         case 'LuckRoll':
           jobResult.cash += Math.round(cargoVal * 0.2)
           jobResult.streetcred += thisJob.job.streetcred_mod
+          jobResult.streetcred = validateStatValue(jobResult.streetcred)
           break;
         case 'ShakedownRoll':
           jobResult.cash += Math.round(cargoVal * 0.5)
           break;
         case 'HeatRoll':
           jobResult.heat += 10
+          jobResult.heat = validateStatValue(jobResult.heat)
           jobResult.streetcred += thisJob.job.streetcred_mod
+          jobResult.streetcred = validateStatValue(jobResult.streetcred)
           break;
         case 'none':
           jobResult.cash += cargoVal;
           jobResult.streetcred += thisJob.job.streetcred_mod
+          jobResult.streetcred = validateStatValue(jobResult.streetcred)
           break;
       }
     }
@@ -99,7 +117,9 @@ export default class DialogPane extends React.Component {
     //sending
     // jobResult
 
-    this.setState({rollResult: losingRoll, karmaResult: challengeOption, jobChoice: jobIndex});
+    profit = jobResult.cash - this.props.currentGamestate().cash
+
+    this.setState({rollResult: losingRoll, karmaResult: challengeOption, jobChoice: jobIndex, jobProfit: profit });
     this.props.patchGamestate(jobResult)
 
   }
@@ -114,7 +134,7 @@ export default class DialogPane extends React.Component {
           <Npc name={this.props.nextJob.npc.name} shadiness={100 - this.props.nextJob.npc.npc_karma} />
           <Job handleOptionSelection={this.handleOptionSelection} nextJob={this.props.nextJob} />
         </React.Fragment> :
-          <FeedbackPane setLoopStage={this.props.setLoopStage}/>}
+          <FeedbackPane results={this.state} setLoopStage={this.props.setLoopStage}/>}
       </div>
     )
   }
