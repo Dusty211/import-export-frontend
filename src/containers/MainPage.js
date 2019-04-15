@@ -87,7 +87,6 @@ class MainPage extends Component {
         },
         body: JSON.stringify({
           gamestate: {
-            company_name: dataArgs.company_name,
             cash: dataArgs.cash,
             luck: dataArgs.luck,
             karma: dataArgs.karma,
@@ -96,8 +95,6 @@ class MainPage extends Component {
             xships: dataArgs.xships,
             ship_lvl: dataArgs.ship_lvl,
             xmercs: dataArgs.xmercs,
-            user_id: dataArgs.user_id,
-            savename: dataArgs.savename
           }
         })
       })
