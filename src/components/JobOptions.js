@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { karmaRoll } from '../DiceRolls.js';
 
 const styles = theme => ({
   root: {
@@ -19,14 +20,13 @@ const styles = theme => ({
 const JobOptions = (props) => {
 
   const { classes } = props;
-  // debugger;
 
   return(
     <List component="nav" className={classes.root}>
     {props.nextJob.job.job_options.map((option, index) => {
       return (
         <ListItem key={option.id} button divider onClick={() => props.handleOptionSelection(index, props.nextJob)} >
-          <ListItemText secondary={option.option_text} />
+          <ListItemText secondary={index === 1 ? `${option.option_text} (${karmaRoll(props.nextJob.npc.npc_karma, props.karma, true)}% success chance)`: option.option_text} />
         </ListItem>
       )
     })}

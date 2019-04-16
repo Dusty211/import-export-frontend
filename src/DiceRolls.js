@@ -38,6 +38,18 @@ export function luckRoll(luck){
   }
 }
 
+export function luckPercent(luck){
+
+  let higherLuckChance = -(0.6 * luck) + 50.0
+  let lowerLuckChance = -(2.6 * luck) + 90.0
+
+  if (higherLuckChance >= lowerLuckChance) {
+    return percentify(higherLuckChance)
+  }else{
+    return percentify(lowerLuckChance)
+  }
+}
+
 export function shakedownRoll(streetcred, xmercs){
 
   const chance = -(0.6 * streetcred) + (40.0 - xmercs)
@@ -45,11 +57,18 @@ export function shakedownRoll(streetcred, xmercs){
   return Math.floor(Math.random() * 101) < chance
 }
 
+export function shakedownPercent(streetcred, xmercs){
+
+  const chance = -(0.6 * streetcred) + (40.0 - xmercs)
+
+  return percentify(chance)
+}
+
 export function karmaRoll(karma1, karma2, returnChance=false) {
   const karmaDiff = Math.abs(karma1 - karma2)
 
   if (returnChance) {
-    return percentify(karmaDiff)
+    return 100 - percentify(karmaDiff)
   }else if (karmaDiff === 0) {
     return true
   }else{
@@ -66,6 +85,19 @@ export function heatRoll(heat, ship_lvl) {
     return Math.floor(Math.random() * 101) < higherHeatChance
   }else{
     return Math.floor(Math.random() * 101) <= lowerHeatChance
+  }
+
+}
+
+export function heatPercent(heat, ship_lvl) {
+
+  const higherHeatChance = (1.5 * heat) - (85.0 - ship_lvl * 2)
+  const lowerHeatChance = (0.5 * heat) - (5 - ship_lvl * 2)
+
+  if (higherHeatChance >= lowerHeatChance) {
+    return percentify(higherHeatChance)
+  }else{
+    return percentify(lowerHeatChance)
   }
 
 }
