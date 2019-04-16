@@ -138,20 +138,34 @@ class MainPage extends Component {
         <div style={{ padding: 10 }} className={classes.root}>
           <Grid container spacing={8}>
             <Grid item xs={12}>
-              <Paper className={classes.headerPaper}>
-                <Header setCurrentGame={this.props.setCurrentGame} handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/>
+              <Paper
+                  className={classes.headerPaper}>
+                <Header
+                    setCurrentGame={this.props.setCurrentGame}
+                    handleUpdateUser={this.props.handleUpdateUser}
+                    user={this.props.user}
+                    companyName={this.currentGamestate(this.props.currentGame).company_name}/>
               </Paper>
             </Grid>
             <Grid item xs={8}>
               <Paper className={classes.dialogPaper}>
-                <DialogPane patchGamestate={this.patchGamestate} nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null} loopStage={this.state.loopStage} currentGamestate={() => this.currentGamestate(this.props.currentGame)} setLoopStage={this.setLoopStage} />
+                <DialogPane
+                    patchGamestate={this.patchGamestate}
+                    nextJob={this.state.loopStage === 0 ? this.nextJob(this.props.gameData, this.currentGamestate(this.props.currentGame)) : null}
+                    loopStage={this.state.loopStage}
+                    currentGamestate={() => this.currentGamestate(this.props.currentGame)}
+                    setLoopStage={this.setLoopStage} />
               </Paper>
             </Grid>
             <Grid item xs={4}>
               <Paper className={classes.infoPaper}>
-                <InfoPane currentGamestate={() => this.currentGamestate(this.props.currentGame)} />
+                <InfoPane
+                    currentGamestate={() => this.currentGamestate(this.props.currentGame)} />
                 <Divider />
-                <ActionPane patchGamestate={this.patchGamestate} disabledButtons={this.state.disabledButtons} currentGamestate={this.currentGamestate(this.props.currentGame)}/>
+                <ActionPane
+                    patchGamestate={this.patchGamestate}
+                    disabledButtons={this.state.disabledButtons}
+                    currentGamestate={this.currentGamestate(this.props.currentGame)}/>
               </Paper>
             </Grid>
           </Grid>

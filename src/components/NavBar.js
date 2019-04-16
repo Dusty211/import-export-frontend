@@ -44,8 +44,10 @@ const NavBar = (props) => {
         <Toolbar>
 
           <Typography variant="h6" color="inherit" className={classes.grow}>
-          {/*Navbar text removed*/}
           {`Welcome, ${props.user.username}!`}
+          </Typography>
+          <Typography variant="h4" color="inherit" className={classes.grow}>
+          {props.companyName === undefined ? '' : props.companyName}
           </Typography>
           <Link style={{textDecoration: 'none', color: 'white'}} to="/games"><Button color="inherit" >Games</Button></Link>
           <Button color="inherit" onClick={() => logoutUser(props)} >Logout</Button>
