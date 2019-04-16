@@ -156,7 +156,6 @@ export default class FeedbackPane extends Component {
       <h2>Results: </h2>
       Customer says: {this.choice(this.props.results.jobChoice)}<br/><br/>
       Profit: {`$${this.props.results.jobProfit}`}<br/><br/>
-      <button onClick={() => this.props.setLoopStage(0)}>loopstage</button>
       </div>
     )
   }

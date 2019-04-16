@@ -7,8 +7,8 @@ import {luckPercent, heatPercent, shakedownPercent} from '../DiceRolls.js'
 
 export default class InfoPane extends Component {
 
-
   render() {
+
     const luck = this.props.currentGamestate().luck
     const karma = this.props.currentGamestate().karma
     const heat = this.props.currentGamestate().heat
@@ -16,8 +16,6 @@ export default class InfoPane extends Component {
     const xships = this.props.currentGamestate().xships
     const ship_lvl = this.props.currentGamestate().ship_lvl
     const xmercs = this.props.currentGamestate().xmercs
-
-
 
     return(
 

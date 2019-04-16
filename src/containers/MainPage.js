@@ -170,7 +170,8 @@ class MainPage extends Component {
                 <ActionPane
                     patchGamestate={this.patchGamestate}
                     disabledButtons={this.state.disabledButtons}
-                    currentGamestate={this.currentGamestate(this.props.currentGame)}/>
+                    currentGamestate={this.currentGamestate(this.props.currentGame)}
+                    setLoopStage={this.setLoopStage}/>
               </Paper>
             </Grid>
           </Grid>

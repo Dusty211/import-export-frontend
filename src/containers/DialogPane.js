@@ -131,10 +131,16 @@ export default class DialogPane extends React.Component {
 
       {this.props.loopStage === 0 ?
         <React.Fragment>
-          <Npc name={this.props.nextJob.npc.name} shadiness={100 - this.props.nextJob.npc.npc_karma} />
-          <Job handleOptionSelection={this.handleOptionSelection} nextJob={this.props.nextJob} karma={this.props.currentGamestate().karma }/>
+          <Npc name={this.props.nextJob.npc.name}
+            shadiness={100 - this.props.nextJob.npc.npc_karma} />
+          <Job handleOptionSelection={this.handleOptionSelection}
+            nextJob={this.props.nextJob}
+            karma={this.props.currentGamestate().karma }/>
         </React.Fragment> :
-          <FeedbackPane results={this.state} setLoopStage={this.props.setLoopStage}/>}
+          <FeedbackPane
+            results={this.state}
+            />
+          }
       </div>
     )
   }

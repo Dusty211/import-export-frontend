@@ -68,6 +68,7 @@ export default class ActionPane extends Component {
         <ActionButton tooltipText={'Hire 2 more mercenaries. Decrease shakedowns while increasing your luck.'} disabledButtons={this.props.disabledButtons} clickCb={hireMercenaries} action={"Hire Mercenaries"} actionIcon={"flash_on"} actionCost={mercenariesCost} currentGamestate={this.props.currentGamestate} />
         <ActionButton tooltipText={'Ship level + 1. Your ships gain hiding spaces.'} disabledButtons={this.props.disabledButtons} clickCb={upgradeShips} action={"Upgrade Ships"} actionIcon={"build"} actionCost={upgradeCost} currentGamestate={this.props.currentGamestate} />
         <ActionButton tooltipText={'Buy 1 ship. Carry more cargo. Make more money.'} disabledButtons={this.props.disabledButtons} clickCb={buyShip} action={"Buy Ship"} actionIcon={"directions_boat"} actionCost={shipCost} currentGamestate={this.props.currentGamestate} />
+        <ActionButton tooltipText={'Just progress without buying anything.'} disabledButtons={this.props.disabledButtons} clickCb={() => this.props.setLoopStage(0)} action={"Skip"} actionIcon={"arrow_forward"} actionCost={0} currentGamestate={this.props.currentGamestate} />
       </div>
     )
   }

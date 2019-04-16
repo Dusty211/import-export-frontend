@@ -37,9 +37,17 @@ const ActionButton = (props) => {
     <Tooltip title={tooltipText} placement="top">
       <Icon>info</Icon>
     </Tooltip>
-      <Button onClick={props.clickCb} disabled={isDisabled(props.disabledButtons)} variant="contained" color="primary" className={classes.button}>
+      <Button
+        onClick={props.clickCb}
+        disabled={isDisabled(props.disabledButtons)}
+        variant="contained" color="primary"
+        className={classes.button}>
         {props.action}
-        <Icon className={classes.rightIcon}>{props.actionIcon}</Icon>
+        <Icon
+          className={classes.rightIcon}
+          >
+        {props.actionIcon}
+        </Icon>
       </Button>
       {`$${props.actionCost.toLocaleString()}`}
     </div>
