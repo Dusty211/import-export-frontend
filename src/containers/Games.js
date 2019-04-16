@@ -8,6 +8,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+//material-ui create game dialog
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -26,7 +36,32 @@ const styles = theme => ({
 
 class Games extends Component {
 
-  createGamestate = (props) => {
+
+  constructor(){
+    super();
+    this.state = {
+      open: false,
+    };
+  }
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
+  };
+
+  handleCreateClick = (e) => {
+    e.preventDefault()
+    this.createGamestate(this.props, this.state.company, this.state.save)
+  }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  createGamestate = (props, company='Import/Export Inc.', save='default save') => {
     // if (e) {e.preventDefault()}
     let token = localStorage.getItem('token')
     if(token){
@@ -39,7 +74,7 @@ class Games extends Component {
         },
         body: JSON.stringify({
           gamestate: {
-            company_name: 'test company',
+            company_name: company,
             cash: 70000,
             luck: 50,
             karma: 50,
@@ -49,7 +84,7 @@ class Games extends Component {
             ship_lvl: 1,
             xmercs: 0,
             user_id: this.props.user.id,
-            savename: 'New Game',
+            savename: save,
           }
         })
       })
@@ -76,7 +111,48 @@ class Games extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <GamesList setCurrentGame={this.props.setCurrentGame} user={this.props.user}/>
-            <button onClick={() => this.createGamestate(this.props)}>New Game</button>
+            <div>
+              <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                New Game
+              </Button>
+              <Dialog
+                open={this.state.open}
+                onClose={this.handleClose}
+                aria-labelledby="form-dialog-title"
+              >
+                <DialogTitle id="form-dialog-title">Create a New Game</DialogTitle>
+                <form onSubmit={this.handleCreateClick}>
+                <DialogContent>
+                  <DialogContentText>
+                    Supply information and submit to create a new game.
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="company"
+                    label="Company Name"
+                    onChange={this.handleChange('company')}
+                    fullWidth
+                  />
+                  <TextField
+                    margin="dense"
+                    id="save"
+                    label="Save Name"
+                    onChange={this.handleChange('save')}
+                    fullWidth
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={this.handleClose} color="primary">
+                    Cancel
+                  </Button>
+                  <Button type="submit" color="primary">
+                    Create
+                  </Button>
+                </DialogActions>
+                </form>
+              </Dialog>
+            </div>
           </Paper>
         </Grid>
       </Grid>
