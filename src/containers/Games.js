@@ -44,6 +44,14 @@ class Games extends Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.user.gamestates.length === 0) {
+      this.props.setFirstGame(true)
+    }else{
+      this.props.setFirstGame(false)
+    }
+  }
+
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
   };
@@ -106,11 +114,18 @@ class Games extends Component {
       <div style={{ padding: 10 }} className={classes.root}>
       <Grid container spacing={16}>
         <Grid item xs={12}>
-          <Paper className={classes.headerPaper}><Header setCurrentGame={this.props.setCurrentGame} handleUpdateUser={this.props.handleUpdateUser} user={this.props.user}/></Paper>
+          <Paper className={classes.headerPaper}>
+            <Header
+              setCurrentGame={this.props.setCurrentGame}
+              handleUpdateUser={this.props.handleUpdateUser}
+              user={this.props.user}/>
+          </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <GamesList setCurrentGame={this.props.setCurrentGame} user={this.props.user}/>
+            <GamesList
+              setCurrentGame={this.props.setCurrentGame}
+              user={this.props.user}/>
             <div>
               <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
                 New Game

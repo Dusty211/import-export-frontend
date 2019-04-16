@@ -15,6 +15,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      firstGame: false,
       user: {},
       currentGame: 0,
       gameData: {}
@@ -37,6 +38,10 @@ class App extends Component {
         this.initializeGameData(data)
       })
     }
+  }
+
+  setFirstGame = (bool) => {
+    this.setState({firstGame: bool})
   }
 
   getUserData = () => {
@@ -89,22 +94,44 @@ class App extends Component {
 
         <Route exact path="/games" render={(props)=> {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <Games {...props} handleUpdateUser={this.handleUpdateUser} handleUpdateGamestate={this.handleUpdateGamestate} setCurrentGame={this.setCurrentGame} user={this.state.user}/>
+          <Games
+            {...props}
+            handleUpdateUser={this.handleUpdateUser}
+            handleUpdateGamestate={this.handleUpdateGamestate}
+            setCurrentGame={this.setCurrentGame}
+            user={this.state.user}
+            setFirstGame={this.setFirstGame} />
         }}
         />
         <Route exact path="/create" render={(props)=> {
-          return isEmpty(this.state.user) ? <CreateUser  {...props} getGameData={this.getGameData} handleUpdateUser={this.handleUpdateUser}/> :
-        <Redirect to="/games" />
+          return isEmpty(this.state.user) ?
+          <CreateUser
+            {...props}
+            getGameData={this.getGameData}
+            handleUpdateUser={this.handleUpdateUser}/> :
+          <Redirect to="/games" />
       }}
       />
         <Route exact path="/profile" render={(props) => {
           return isEmpty(this.state.user) ? <Redirect to ="/login" /> :
-          <MainPage {...props} gameData={this.state.gameData} currentGame={this.state.currentGame} setCurrentGame={this.setCurrentGame} handleUpdateUser={this.handleUpdateUser} user={this.state.user} handleUpdateGamestate={this.handleUpdateGamestate}/>
+          <MainPage
+            {...props}
+            gameData={this.state.gameData}
+            currentGame={this.state.currentGame}
+            setCurrentGame={this.setCurrentGame}
+            handleUpdateUser={this.handleUpdateUser}
+            user={this.state.user}
+            handleUpdateGamestate={this.handleUpdateGamestate}
+            firstGame={this.state.firstGame} />
         }}
         />
         <Route exact path ="/login" render={(props) => {
-          return isEmpty(this.state.user) ? <Login {...props} getGameData={this.getGameData} handleUpdateUser={this.handleUpdateUser}/> :
-        <Redirect to="/games" />
+          return isEmpty(this.state.user) ?
+          <Login
+            {...props}
+            getGameData={this.getGameData}
+            handleUpdateUser={this.handleUpdateUser}/> :
+          <Redirect to="/games" />
       }}
       />
       </Switch>

@@ -13,6 +13,9 @@ const styles = theme => ({
   leftIcon: {
     marginRight: theme.spacing.unit,
   },
+  rightIcon: {
+    marginLeft: theme.spacing.unit,
+  },
 });
 
 const ActionButton = (props) => {

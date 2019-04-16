@@ -15,6 +15,9 @@ import Divider from '@material-ui/core/Divider';
 //background image
 import Image from '../images/ship0.jpg'
 
+//help modal
+import Help from '../components/Help.js'
+
 const styles = theme => ({
 root: {
   flexGrow: 1,
@@ -144,7 +147,7 @@ class MainPage extends Component {
                     setCurrentGame={this.props.setCurrentGame}
                     handleUpdateUser={this.props.handleUpdateUser}
                     user={this.props.user}
-                    companyName={this.currentGamestate(this.props.currentGame).company_name}/>
+                    companyName={this.currentGamestate(this.props.currentGame).company_name} />
               </Paper>
             </Grid>
             <Grid item xs={8}>
@@ -159,6 +162,8 @@ class MainPage extends Component {
             </Grid>
             <Grid item xs={4}>
               <Paper className={classes.infoPaper}>
+                <Help
+                  firstGame={this.props.firstGame} />
                 <InfoPane
                     currentGamestate={() => this.currentGamestate(this.props.currentGame)} />
                 <Divider />
