@@ -44,7 +44,7 @@ paper: {
     // color: theme.palette.text.secondary,
     color: 'white',
     backgroundImage: `url(${Image})`,
-    backgroundSize: "100%",
+    backgroundSize: "130%",
     backgroundPosition: "center center",
     // backgroundAttachment: "fixed",
     height: "100%"
