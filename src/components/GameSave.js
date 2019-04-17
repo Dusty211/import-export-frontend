@@ -12,6 +12,9 @@ import Typography from '@material-ui/core/Typography';
 //react-router
 import { Link } from "react-router-dom";
 
+//material-ui delete confirm
+import DeleteConfirm from './DeleteConfirm.js'
+
 const styles = {
   card: {
     minWidth: 275,
@@ -73,6 +76,7 @@ const GameSave = (props) => {
           <Button onClick={() => props.setCurrentGame(props.gamestate.id)} size="small">Load Game</Button>
         </Link>
         <Button onClick={(e) => props.deleteCurrentGame(e, props.gamestate.id)} size="small">Delete Game</Button>
+        <DeleteConfirm deleteCurrentGame={props.deleteCurrentGame} gamestate={props.gamestate} />
       </CardActions>
     </Card>
 
