@@ -5,7 +5,6 @@ export default class Header extends Component {
 
 
   render() {
-    console.log('header', this.props.companyName)
     return(
       <div>
       <NavBar

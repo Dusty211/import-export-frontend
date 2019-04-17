@@ -113,46 +113,54 @@ class Help extends React.Component {
             Shady people work better with shady people. The same goes for the less criminally inclined.
             </Typography>
             <br />
-            <p>
+
             <Typography gutterBottom>
             Luck:  Luck has influence on the chance that ships are effected by things like pirates, weather, mechanical and navigational problems. Luck is dependent on the amount of money you spend on Mercenaries.
             </Typography>
-            </p>
-            <p>
+            <br />
+
+
             <Typography gutterBottom>
             Karma:  Karma is affected by your decisions in the game. If your karma is low, you are more likely to have positive outcomes when haggling with shady people. Non-shady people are better influenced by people with high karma.
             </Typography>
-            </p>
-            <p>
+            <br />
+
+
             <Typography gutterBottom>
             Heat:  The criminality of your decisions has either a positive, negative, or neutral affect on your heat. You can decrease heat by using the Send Bribes action. Having a high heat makes your shipments more likely to be seized.
             </Typography>
-            </p>
-            <p>
+            <br />
+
+
             <Typography gutterBottom>
             Streetcred:  Street Cred will go up if you complete illegal jobs, and down if you complete legal jobs. Having low Street Cred will make you more likely to encounter a shakedown. All customers require a certain range of streetcred.
             </Typography>
-            </p>
-            <p>
+            <br />
+
+
             <Typography gutterBottom>
             Ships:  Your shipment value is multiplied by your number of ships.
             </Typography>
-            </p>
-            <p>
+            <br />
+
+
             <Typography gutterBottom>
             Ship lvl:  Upgraded ships are less likely to have shipments seized by law enforcement.
             </Typography>
-            </p>
-            <p>
+            <br />
+
+
             <Typography gutterBottom>
             Mercenaries:  Mercenaries increase your luck stat and also decrease the chance of a shakedown.
             </Typography>
-            </p>
-            <p>
+            <br />
+
+
             <Typography gutterBottom>
             Bribes:  Bribes will decrease your heat level, but will make you appear suspect in the eyes of law abiding customers.
             </Typography>
-            </p>
+            <br />
+
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
