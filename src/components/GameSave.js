@@ -69,9 +69,10 @@ const GameSave = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-      <Link to="/profile">
-        <Button onClick={() => props.setCurrentGame(props.gamestate.id)} size="small">Load Game</Button>
+        <Link to="/profile" style={{textDecoration: 'none', color: 'white'}} >
+          <Button onClick={() => props.setCurrentGame(props.gamestate.id)} size="small">Load Game</Button>
         </Link>
+        <Button onClick={(e) => props.deleteCurrentGame(e, props.gamestate.id)} size="small">Delete Game</Button>
       </CardActions>
     </Card>
 

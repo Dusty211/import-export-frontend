@@ -79,6 +79,12 @@ class App extends Component {
     })
   }
 
+  handleDeleteGamestate = (id) => {
+    this.setState({
+      user: {...this.state.user, gamestates: [...this.state.user.gamestates.filter(state => state.id !== id)]}
+    })
+  }
+
   componentDidMount() {
     this.getGameData()
     this.getUserData()
@@ -98,6 +104,7 @@ class App extends Component {
             {...props}
             handleUpdateUser={this.handleUpdateUser}
             handleUpdateGamestate={this.handleUpdateGamestate}
+            handleDeleteGamestate={this.handleDeleteGamestate}
             setCurrentGame={this.setCurrentGame}
             user={this.state.user}
             setFirstGame={this.setFirstGame} />

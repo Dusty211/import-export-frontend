@@ -61,6 +61,10 @@ class Games extends Component {
     this.createGamestate(this.props, this.state.company, this.state.save)
   }
 
+  handleDeleteClick = (e, id) => {
+    this.deleteCurrentGame(id)
+  }
+
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -105,6 +109,27 @@ class Games extends Component {
     }
   }
 
+  deleteCurrentGame = (id) => {
+    let token = localStorage.getItem('token')
+    if(token){
+      fetch(`http://localhost:3000/api/v1/gamestates/${id}`,{
+        method: 'DELETE',
+        headers:{
+          "Authentication": `Bearer ${token}`,
+        },
+      })
+      .then(r => r.json())
+      .then(data => {
+        // if (data)
+        if (data.destroyed) {
+          this.props.handleDeleteGamestate(id);
+        }else{
+          alert('The gamesave was not deleted.')
+        }
+      })
+    }
+  }
+
   render() {
 
     const { classes } = this.props;
@@ -125,6 +150,7 @@ class Games extends Component {
           <Paper className={classes.paper}>
             <GamesList
               setCurrentGame={this.props.setCurrentGame}
+              deleteCurrentGame={this.handleDeleteClick}
               user={this.props.user}/>
             <div>
               <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>

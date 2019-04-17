@@ -10,7 +10,7 @@ const GamesList = (props) => {
       <h3>{`Select "New Game" to start a game.`}</h3>
     </div> :
       props.user.gamestates.map((gamestate) => {
-      return <GameSave key={gamestate.id} gamestate={gamestate} setCurrentGame={props.setCurrentGame} />
+      return <GameSave key={gamestate.id} gamestate={gamestate} setCurrentGame={props.setCurrentGame} deleteCurrentGame={props.deleteCurrentGame} />
     })
   }
 </React.Fragment>
