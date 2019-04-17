@@ -96,6 +96,7 @@ class Help extends React.Component {
                 <p>
                   This quickguide can always be opened at a later time
                   by clicking the question mark in the top corner of the pane to the right.
+                  Hovering over the 'i' icons give you helpful information as well.
                 </p>
               </React.Fragment>
                : 'Quickguide:'
