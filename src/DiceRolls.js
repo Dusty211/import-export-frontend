@@ -91,8 +91,8 @@ export function heatRoll(heat, ship_lvl) {
 
 export function heatPercent(heat, ship_lvl) {
 
-  const higherHeatChance = (1.5 * heat) - (85.0 - ship_lvl * 2)
-  const lowerHeatChance = (0.5 * heat) - (5 - ship_lvl * 2)
+  const higherHeatChance = (1.5 * heat) - (85.0 + ship_lvl * 2)
+  const lowerHeatChance = (0.5 * heat) - (5 + ship_lvl * 2)
 
   if (higherHeatChance >= lowerHeatChance) {
     return percentify(higherHeatChance)
