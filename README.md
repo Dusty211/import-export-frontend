@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Import/Export (Back End)](https://github.com/Dusty211/import-export-backend)
 
-## Available Scripts
+## Import/Export (Front End)
+This is the front end for Import/Export - a text-based RPG web app game. You play the role of someone running a shipping company. With each loop of the game, you are faced with a potential customer and several options for how to handle each customer's proposition. Each choice has different effects on your stats throughout the game and can effect your financial well-being, your karma, and also your status in the eyes of the law. All of these stats affect the probabilities of certain events occurring throughout the game.
 
-In the project directory, you can run:
+## Features
+- Fully persistent game files automatically save your progress as you play
+- User profiles using OAuth and JWT tokens for login
+- Material-ui for the user interface
+- React-router to mimic multiple pages on a single page application
+- Adjustable models with multiple curves for RNG rolls
 
-### `npm start`
+## Motivation for Import/Export
+I had several motivations for creating this project. I wanted to:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Learn more about creating an app with user profiles, login, and user-specific data
+- Gain more experience with a user interface library
+- Experience what it was like to design and balance probability models for game or program events
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The amount of creative freedom allowed by creating a game was also very appealing.
 
-### `npm test`
+## Made with:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React.js](https://github.com/facebook/create-react-app)
+- [Material-ui](https://github.com/mui-org/material-ui)
 
-### `npm run build`
+## Development Environment Installation
+#### Fork and clone the repo.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Install all packages with npm:
+`$ cd <root dir of clone>`  
+`$ npm install`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+#### Start the local React dev server:
+`$ npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Reference
 
-### `npm run eject`
+Information on the API can be found here: [Import/Export (Back End)](https://github.com/Dusty211/import-export-backend)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+MIT © Kyle Houghton
